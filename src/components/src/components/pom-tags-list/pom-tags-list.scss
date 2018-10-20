@@ -1,0 +1,7 @@
+.tags {
+  display: flex;
+
+  pom-tags-list-item {
+    margin-right: calc(var(--pom-margin-end) / 2);
+  }
+}

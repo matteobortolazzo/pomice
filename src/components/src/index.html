@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <script src="/build/pomice.js"></script>
+
+</head>
+<body>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      --pom-margin-top: 10px;
+      --pom-margin-end: 10px;
+      --pom-margin-bottom: 10px;
+      --pom-margin-start: 10px;
+
+      --pom-padding-top: 10px;
+      --pom-padding-end: 10px;
+      --pom-padding-bottom: 10px;
+      --pom-padding-start: 10px;
+
+      --pom-padding-big-top: 30px;
+      --pom-padding-big-end: 20px;
+      --pom-padding-big-bottom: 30px;
+      --pom-padding-big-start: 20px;
+
+      --pom-font-size-smaller: 0.6em;
+      --pom-font-size-small: 0.8em;
+      --pom-font-size-default: 1em;
+      --pom-font-size-medium: 1.2em;
+      --pom-font-size-big: 1.4em;
+      --pom-font-size-huge: 1.6em;
+
+      --pom-text-color: #424242;
+      --pom-text-color-2: #6c7a89;
+      --pom-text-color-contrast: #ffffff;
+      --pom-text-color-contrast-2: #dddddd;
+      --pom-background-color: #ffffff;
+      --pom-background-color-2: #eeeeee;
+
+      --pom-color-primary: #1976D2;
+      --pom-color-secondary: #009688;
+
+      --pom-max-container-width: 600px;
+      --pom-box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.2);
+      --pom-transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+
+      margin: 0px;
+      padding: 0px;
+      padding-top: 59px;
+      font-family: -apple-system,BvlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      color: var(--pom-text-color);
+      background-color: var(--pom-background-color);
+    }
+    pom-header {
+      top: 0;
+      width: 100%;
+      position: fixed;
+    }
+  </style>
+  <pom-header main-title="Matteo Bortolazzo" sub-title="from Ionic to .NET and Azure">
+    <pom-header-icon-item icon="logo-twitter" urL="https://twitter.com"></pom-header-icon-item>
+    <pom-header-icon-item icon="logo-github" urL="https://github.com"></pom-header-icon-item>
+    <pom-header-icon-item icon="logo-linkedin" urL="https://linkedin.com"></pom-header-icon-item>
+  </pom-header>
+  <pom-tutorials-list>
+    <pom-tutorials-list-item main-title="Azure Active Directory B2C with Ionic v4"
+      short-description="Learn how to sign-in and sign-up a user in Azure AD B2C with a Ionic v4 application."
+      created-at="2018-10-10">
+      <pom-tags-list>
+        <pom-tags-list-item title="Ionic"></pom-tags-list-item>
+        <pom-tags-list-item title="Azure Active Directory B2C"></pom-tags-list-item>
+      </pom-tags-list>
+    </pom-tutorials-list-item>
+  </pom-tutorials-list>
+  <pom-tutorial
+    main-title="Azure Active Directory B2C with Ionic v4" duration="30" created-at="2018-10-10"
+    description="Ionic v4 is the latest version of Ionic, totally built on web components using their [StencilJS](https://stenciljs.com) compiler. Ionic is no more binded to Angular so the usage of Cordova plugins is slightly changed. \nAzure Active Directory B2C is __customer identity and access management__ cloud service with lot of features and customization possibilities.\nWe will using Ionic v4 Beta with Angular and Cordova. In the future I'll do a new article on how to use Capacitor instead of Cordova."
+  >
+    <pom-tags-list slot="tags">
+      <pom-tags-list-item title="Ionic"></pom-tags-list-item>
+      <pom-tags-list-item title="Azure Active Directory B2C"></pom-tags-list-item>
+    </pom-tags-list>
+    <pom-tutorial-section slot="section" main-title="Section 1" slug="section-1">
+      <pom-tutorial-section-copy copy="Let's start generating a new Ionic project. We can do that with the following command: `ionic start ad-b2c-app blank --type=angular`"></pom-tutorial-section-copy>
+      <pom-tutorial-section-code language="Typescript" filename="script.ts"
+        code="```typescript
+export class Dog {
+  dog: string = 'goodboy';
+
+  constructor() {
+    this.dog = 'bad';
+  }
+}
+```"></pom-tutorial-section-code>
+      <pom-tutorial-section-image caption="The Azure Logo" url="//images.ctfassets.net/51lkc6dcu1f8/z283U9TS5qsgCsyeeukk6/8ea2677e2eefc777af4453c3c5f4801e/microsoft-azure-new-logo-2017.png"></pom-tutorial-section-image>
+    </pom-tutorial-section>
+    <pom-tutorial-section slot="section" main-title="Section 2" slug="section-2"></pom-tutorial-section>
+  </pom-tutorial>
+</body>
+<script async defer src='https://unpkg.com/st-img@0.1.1/dist/stimg.js'></script>
+<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</html>

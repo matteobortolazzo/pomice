@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  align-items: center;
+}
+
+h2 {
+  font-size: var(--pom-font-size-big);
+  margin: 0 var(--pom-margin-end) 0 0;
+}
+
+pom-button-copy-link {
+  transform: translateY(4px);
+}

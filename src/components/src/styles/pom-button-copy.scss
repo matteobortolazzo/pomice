@@ -1,0 +1,36 @@
+:host {
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+
+  ion-icon {
+    font-size: var(--pom-font-size-big);
+    transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &:active {
+      transform: scale(0.7);
+    }
+  }
+
+  &::after {
+    color: var(--pom-background-color-2);
+    font-size: 12px;
+    opacity: 0;
+    content: 'Copied!';
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 2px 5px;
+    background: var(--pom-text-color);
+    border-radius: 2px;
+    box-shadow: var(--pom-box-shadow);
+  }
+  &:not(:active)::after {
+    transition: opacity 2s linear;
+  }
+  &:active::after {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,6 @@
+.tutorials {
+
+  pom-tutorials-list-item:nth-child(even) {
+    --item-background-color: var(--pom-background-color-2);
+  }
+}
