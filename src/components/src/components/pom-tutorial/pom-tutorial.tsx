@@ -12,6 +12,7 @@ export class Tutorial {
   @Prop() createdAt: string;
   @Prop() duration: number;
   @Prop() content: string;
+  @Prop() tags: string;
 
   private renderer = new marked.Renderer();
 
@@ -37,7 +38,12 @@ export class Tutorial {
       <section>
         <header>
           <h1>{this.mainTitle}</h1>
-          <slot name="tags"/>
+          <pom-tags-list>
+            {
+              this.tags.split(';').map(t =>
+                <pom-tags-list-item mainTitle={t}></pom-tags-list-item>
+            )}
+          </pom-tags-list>
           <div class="more-info">
             <div class="publish-date">
               <ion-icon name="calendar"></ion-icon>

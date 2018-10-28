@@ -32,25 +32,52 @@
 .popup {
   opacity: 0;
   pointer-events: none;
-  right: 0;
-  top: 10px;
-  width: 120px;
-  border-radius: 2px;
+  right: 100%;
+  top: -15px;
   position: absolute;
   transition: var(--pom-transition);
-  padding-top: 20px;
+  padding-right: 20px;
 
   .popup-inner {
-    padding: 10px;
+    padding: 20px 40px 20px 20px;
+    border-radius: 5px;
     box-shadow: var(--pom-box-shadow);
     background-color: var(--pom-background-color);
   }
+}
 
-  pom-share-button {
-    margin-top: 5px;
+.social-button {
+  margin-top: 10px;
+  transition: var(--pom-transition);
 
-    &:first-child {
-      margin-top: 0;
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  a,
+  a:link,
+  a:active,
+  a:visited {
+    display: flex;
+    text-decoration: none;
+    color: var(--pom-color-primary);
+  }
+
+  ion-icon {
+    font-size: 1.4em;
+  }
+
+  .description {
+    margin-left: 10px;
+    color: var(--pom-text-color);
+    transition: var(--pom-transition);
+
+    &:hover {
+      color: var(--pom-color-primary-shade);
     }
   }
 }

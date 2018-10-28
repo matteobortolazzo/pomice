@@ -41,15 +41,6 @@ export namespace Components {
     'subTitle'?: string;
   }
 
-  interface PomShareButton {
-    'social': 'facebook' | 'twitter' | 'linkedin' | 'email';
-    'tutorialName': string;
-  }
-  interface PomShareButtonAttributes extends StencilHTMLAttributes {
-    'social'?: 'facebook' | 'twitter' | 'linkedin' | 'email';
-    'tutorialName'?: string;
-  }
-
   interface PomShareButtons {
     'tutorialName': string;
   }
@@ -100,23 +91,27 @@ export namespace Components {
     'createdAt': string;
     'duration': number;
     'mainTitle': string;
+    'tags': string;
   }
   interface PomTutorialAttributes extends StencilHTMLAttributes {
     'content'?: string;
     'createdAt'?: string;
     'duration'?: number;
     'mainTitle'?: string;
+    'tags'?: string;
   }
 
   interface PomTutorialsListItem {
     'createdAt': Date;
     'mainTitle': string;
     'shortDescription': string;
+    'tags': string;
   }
   interface PomTutorialsListItemAttributes extends StencilHTMLAttributes {
     'createdAt'?: Date;
     'mainTitle'?: string;
     'shortDescription'?: string;
+    'tags'?: string;
   }
 
   interface PomTutorialsList {}
@@ -128,7 +123,6 @@ declare global {
     'PomHeaderIconItem': Components.PomHeaderIconItem;
     'PomHeaderItem': Components.PomHeaderItem;
     'PomHeader': Components.PomHeader;
-    'PomShareButton': Components.PomShareButton;
     'PomShareButtons': Components.PomShareButtons;
     'PomTagsListItem': Components.PomTagsListItem;
     'PomTagsList': Components.PomTagsList;
@@ -143,7 +137,6 @@ declare global {
     'pom-header-icon-item': Components.PomHeaderIconItemAttributes;
     'pom-header-item': Components.PomHeaderItemAttributes;
     'pom-header': Components.PomHeaderAttributes;
-    'pom-share-button': Components.PomShareButtonAttributes;
     'pom-share-buttons': Components.PomShareButtonsAttributes;
     'pom-tags-list-item': Components.PomTagsListItemAttributes;
     'pom-tags-list': Components.PomTagsListAttributes;
@@ -171,12 +164,6 @@ declare global {
   var HTMLPomHeaderElement: {
     prototype: HTMLPomHeaderElement;
     new (): HTMLPomHeaderElement;
-  };
-
-  interface HTMLPomShareButtonElement extends Components.PomShareButton, HTMLStencilElement {}
-  var HTMLPomShareButtonElement: {
-    prototype: HTMLPomShareButtonElement;
-    new (): HTMLPomShareButtonElement;
   };
 
   interface HTMLPomShareButtonsElement extends Components.PomShareButtons, HTMLStencilElement {}
@@ -231,7 +218,6 @@ declare global {
     'pom-header-icon-item': HTMLPomHeaderIconItemElement
     'pom-header-item': HTMLPomHeaderItemElement
     'pom-header': HTMLPomHeaderElement
-    'pom-share-button': HTMLPomShareButtonElement
     'pom-share-buttons': HTMLPomShareButtonsElement
     'pom-tags-list-item': HTMLPomTagsListItemElement
     'pom-tags-list': HTMLPomTagsListElement
@@ -246,7 +232,6 @@ declare global {
     'pom-header-icon-item': HTMLPomHeaderIconItemElement;
     'pom-header-item': HTMLPomHeaderItemElement;
     'pom-header': HTMLPomHeaderElement;
-    'pom-share-button': HTMLPomShareButtonElement;
     'pom-share-buttons': HTMLPomShareButtonsElement;
     'pom-tags-list-item': HTMLPomTagsListItemElement;
     'pom-tags-list': HTMLPomTagsListElement;

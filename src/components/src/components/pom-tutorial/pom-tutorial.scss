@@ -4,6 +4,10 @@
   max-width: var(--pom-max-container-width);
 }
 
+section {
+  padding: 20px;
+}
+
 a,
 a:link,
 a:active,
@@ -14,18 +18,7 @@ a:visited {
 }
 
 h1 {
-  font-size: var(--pom-font-size-huge);
   margin: 0 0 var(--pom-margin-bottom);
-}
-
-section {
-  padding: var(--pom-padding-big-top) var(--pom-padding-big-end) var(--pom-padding-big-bottom) var(--pom-padding-big-start);
-}
-
-.description {
-  text-align: justify;
-  color: var(--pom-text-color-2);
-  font-size: var(--pom-font-size-default);
 }
 
 .more-info {
@@ -50,6 +43,7 @@ section {
   }
 
   pom-share-buttons {
+    z-index: 30;
     position: absolute;
     top: 0;
     right: 0;
@@ -82,4 +76,8 @@ section {
       transform: scale(0.95);
     }
   }
+}
+
+p {
+  text-align: justify;
 }

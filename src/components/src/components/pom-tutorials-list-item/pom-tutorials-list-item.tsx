@@ -10,11 +10,17 @@ export class TutorialsListItem {
   @Prop() mainTitle: string;
   @Prop() shortDescription: string;
   @Prop() createdAt: Date;
+  @Prop() tags: string;
 
   render() {
     return (
       <div class="tutorial">
-        <slot />
+        <pom-tags-list>
+          {
+            this.tags.split(';').map(t =>
+              <pom-tags-list-item mainTitle={t}></pom-tags-list-item>
+            )}
+        </pom-tags-list>
         <div class="title">{this.mainTitle}</div>
         <div class="description">{this.shortDescription}</div>
         <div class="date">{Moment(this.createdAt).format('ll')}</div>
