@@ -2,7 +2,7 @@ import {Component, Prop} from "@stencil/core";
 
 @Component({
   tag: 'pom-button-copy-code',
-  styleUrl: '../../styles/pom-button-copy.scss',
+  styleUrl: 'pom-button-copy-code.scss',
   shadow: true
 })
 export class ButtonCopyLink {
@@ -15,7 +15,7 @@ export class ButtonCopyLink {
   render() {
     return (
       <div class="container" onClick={() => this.copyToClipboard()}>
-        <ion-icon name="copy"></ion-icon>
+        <ion-icon name="copy"></ion-icon> Copy
       </div>
     );
   }

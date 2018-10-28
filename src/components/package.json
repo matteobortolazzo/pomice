@@ -1,7 +1,6 @@
 {
-  "name": "my-component",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "name": "pomice",
+  "version": "1.0.0",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",
@@ -22,16 +21,9 @@
     "moment": "^2.22.2"
   },
   "devDependencies": {
-    "@stencil/core": "~0.13.2"
+    "@stencil/core": "^0.13.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
-  },
-  "author": "Ionic Team",
+  "author": "Matteo Bortolazzo",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
-  },
-  "homepage": "https://github.com/ionic-team/stencil"
+  "homepage": "https://matteobortolazzo.com"
 }

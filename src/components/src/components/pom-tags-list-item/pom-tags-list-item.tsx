@@ -6,12 +6,12 @@ import {Component, Prop} from "@stencil/core";
   shadow: true
 })
 export class TutorialsListItem {
-  @Prop() title: string;
+  @Prop() mainTitle: string;
   @Prop() slug: string;
 
   render() {
     return (
-      <div class="tag">{this.title}</div>
+      <div class="tag">{this.mainTitle}</div>
     );
   }
 }

@@ -43,15 +43,16 @@
       --pom-background-color-2: #eeeeee;
 
       --pom-color-primary: #1976D2;
+      --pom-color-primary-shade: #3171e0;
       --pom-color-secondary: #009688;
+      --pom-color-secondary-shade: #008478;
 
       --pom-max-container-width: 600px;
       --pom-box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.2);
-      --pom-transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+      --pom-transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
 
       margin: 0px;
-      padding: 0px;
-      padding-top: 59px;
+      padding: 59px 0px 0px;
       font-family: -apple-system,BvlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
       color: var(--pom-text-color);
       background-color: var(--pom-background-color);
@@ -72,23 +73,20 @@
       short-description="Learn how to sign-in and sign-up a user in Azure AD B2C with a Ionic v4 application."
       created-at="2018-10-10">
       <pom-tags-list>
-        <pom-tags-list-item title="Ionic"></pom-tags-list-item>
-        <pom-tags-list-item title="Azure Active Directory B2C"></pom-tags-list-item>
+        <pom-tags-list-item main-title="Ionic"></pom-tags-list-item>
+        <pom-tags-list-item main-title="Azure Active Directory B2C"></pom-tags-list-item>
       </pom-tags-list>
     </pom-tutorials-list-item>
   </pom-tutorials-list>
   <pom-tutorial
     main-title="Azure Active Directory B2C with Ionic v4" duration="30" created-at="2018-10-10"
-    description="Ionic v4 is the latest version of Ionic, totally built on web components using their [StencilJS](https://stenciljs.com) compiler. Ionic is no more binded to Angular so the usage of Cordova plugins is slightly changed. \nAzure Active Directory B2C is __customer identity and access management__ cloud service with lot of features and customization possibilities.\nWe will using Ionic v4 Beta with Angular and Cordova. In the future I'll do a new article on how to use Capacitor instead of Cordova."
-  >
-    <pom-tags-list slot="tags">
-      <pom-tags-list-item title="Ionic"></pom-tags-list-item>
-      <pom-tags-list-item title="Azure Active Directory B2C"></pom-tags-list-item>
-    </pom-tags-list>
-    <pom-tutorial-section slot="section" main-title="Section 1" slug="section-1">
-      <pom-tutorial-section-copy copy="Let's start generating a new Ionic project. We can do that with the following command: `ionic start ad-b2c-app blank --type=angular`"></pom-tutorial-section-copy>
-      <pom-tutorial-section-code language="Typescript" filename="script.ts"
-        code="```typescript
+    content="Let's start generating a new Ionic project. We can do that with the following command: `ionic start ad-b2c-app blank --type=angular`
+
+## Section 2
+
+asdsfl
+
+```TypeScript
 export class Dog {
   dog: string = 'goodboy';
 
@@ -96,10 +94,16 @@ export class Dog {
     this.dog = 'bad';
   }
 }
-```"></pom-tutorial-section-code>
-      <pom-tutorial-section-image caption="The Azure Logo" url="//images.ctfassets.net/51lkc6dcu1f8/z283U9TS5qsgCsyeeukk6/8ea2677e2eefc777af4453c3c5f4801e/microsoft-azure-new-logo-2017.png"></pom-tutorial-section-image>
-    </pom-tutorial-section>
-    <pom-tutorial-section slot="section" main-title="Section 2" slug="section-2"></pom-tutorial-section>
+```
+
+asdokajd
+
+![Logo logo](//images.ctfassets.net/51lkc6dcu1f8/z283U9TS5qsgCsyeeukk6/8ea2677e2eefc777af4453c3c5f4801e/microsoft-azure-new-logo-2017.png 'The Azure Logo')
+">
+    <pom-tags-list slot="tags">
+      <pom-tags-list-item main-title="Ionic"></pom-tags-list-item>
+      <pom-tags-list-item main-title="Azure Active Directory B2C"></pom-tags-list-item>
+    </pom-tags-list>
   </pom-tutorial>
 </body>
 <script async defer src='https://unpkg.com/st-img@0.1.1/dist/stimg.js'></script>

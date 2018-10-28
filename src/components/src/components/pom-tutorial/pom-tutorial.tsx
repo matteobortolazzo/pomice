@@ -11,7 +11,26 @@ export class Tutorial {
   @Prop() mainTitle: string;
   @Prop() createdAt: string;
   @Prop() duration: number;
-  @Prop() description: string;
+  @Prop() content: string;
+
+  private renderer = new marked.Renderer();
+
+  constructor() {
+    this.renderer.code = (code: string, language: string) =>
+      `<pom-tutorial-section-code language="${language}" code="${code}"></pom-tutorial-section-code>`;
+    this.renderer.image = (href: string, title: string, text: string) =>
+      `<pom-tutorial-section-image caption="${title}" src="${href}" alt="${text}"></pom-tutorial-section-image>`;
+    this.renderer.heading = (text, level) => {
+      let escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      return `
+          <h${level} class="section-header" id="${escapedText}">          
+            <span>${text}</span>
+            <a name="${escapedText}" href="#${escapedText}">
+              <ion-icon name="link"></ion-icon>
+            </a>
+          </h${level}>`;
+    };
+  }
 
   render() {
     return (
@@ -30,8 +49,7 @@ export class Tutorial {
             </div>
           </div>
         </header>
-        <div class="description" innerHTML={marked(this.description)}></div>
-        <slot name="section"/>
+        <div innerHTML={marked(this.content, { renderer: this.renderer })}></div>
       </section>
     );
   }

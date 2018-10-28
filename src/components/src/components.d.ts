@@ -19,13 +19,6 @@ export namespace Components {
     'code'?: string;
   }
 
-  interface PomButtonCopyLink {
-    'slug': string;
-  }
-  interface PomButtonCopyLinkAttributes extends StencilHTMLAttributes {
-    'slug'?: string;
-  }
-
   interface PomHeaderIconItem {
     'icon': string;
     'url': string;
@@ -56,12 +49,12 @@ export namespace Components {
   }
 
   interface PomTagsListItem {
+    'mainTitle': string;
     'slug': string;
-    'title': string;
   }
   interface PomTagsListItemAttributes extends StencilHTMLAttributes {
+    'mainTitle'?: string;
     'slug'?: string;
-    'title'?: string;
   }
 
   interface PomTagsList {
@@ -75,49 +68,33 @@ export namespace Components {
 
   interface PomTutorialSectionCode {
     'code': string;
-    'filename': string;
     'language': string;
   }
   interface PomTutorialSectionCodeAttributes extends StencilHTMLAttributes {
     'code'?: string;
-    'filename'?: string;
     'language'?: string;
   }
 
-  interface PomTutorialSectionCopy {
-    'copy': string;
-  }
-  interface PomTutorialSectionCopyAttributes extends StencilHTMLAttributes {
-    'copy'?: string;
-  }
-
   interface PomTutorialSectionImage {
+    'alt': string;
     'caption': string;
-    'url': string;
+    'src': string;
   }
   interface PomTutorialSectionImageAttributes extends StencilHTMLAttributes {
+    'alt'?: string;
     'caption'?: string;
-    'url'?: string;
-  }
-
-  interface PomTutorialSection {
-    'mainTitle': string;
-    'slug': string;
-  }
-  interface PomTutorialSectionAttributes extends StencilHTMLAttributes {
-    'mainTitle'?: string;
-    'slug'?: string;
+    'src'?: string;
   }
 
   interface PomTutorial {
+    'content': string;
     'createdAt': string;
-    'description': string;
     'duration': number;
     'mainTitle': string;
   }
   interface PomTutorialAttributes extends StencilHTMLAttributes {
+    'content'?: string;
     'createdAt'?: string;
-    'description'?: string;
     'duration'?: number;
     'mainTitle'?: string;
   }
@@ -140,16 +117,13 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'PomButtonCopyCode': Components.PomButtonCopyCode;
-    'PomButtonCopyLink': Components.PomButtonCopyLink;
     'PomHeaderIconItem': Components.PomHeaderIconItem;
     'PomHeaderItem': Components.PomHeaderItem;
     'PomHeader': Components.PomHeader;
     'PomTagsListItem': Components.PomTagsListItem;
     'PomTagsList': Components.PomTagsList;
     'PomTutorialSectionCode': Components.PomTutorialSectionCode;
-    'PomTutorialSectionCopy': Components.PomTutorialSectionCopy;
     'PomTutorialSectionImage': Components.PomTutorialSectionImage;
-    'PomTutorialSection': Components.PomTutorialSection;
     'PomTutorial': Components.PomTutorial;
     'PomTutorialsListItem': Components.PomTutorialsListItem;
     'PomTutorialsList': Components.PomTutorialsList;
@@ -157,16 +131,13 @@ declare global {
 
   interface StencilIntrinsicElements {
     'pom-button-copy-code': Components.PomButtonCopyCodeAttributes;
-    'pom-button-copy-link': Components.PomButtonCopyLinkAttributes;
     'pom-header-icon-item': Components.PomHeaderIconItemAttributes;
     'pom-header-item': Components.PomHeaderItemAttributes;
     'pom-header': Components.PomHeaderAttributes;
     'pom-tags-list-item': Components.PomTagsListItemAttributes;
     'pom-tags-list': Components.PomTagsListAttributes;
     'pom-tutorial-section-code': Components.PomTutorialSectionCodeAttributes;
-    'pom-tutorial-section-copy': Components.PomTutorialSectionCopyAttributes;
     'pom-tutorial-section-image': Components.PomTutorialSectionImageAttributes;
-    'pom-tutorial-section': Components.PomTutorialSectionAttributes;
     'pom-tutorial': Components.PomTutorialAttributes;
     'pom-tutorials-list-item': Components.PomTutorialsListItemAttributes;
     'pom-tutorials-list': Components.PomTutorialsListAttributes;
@@ -177,12 +148,6 @@ declare global {
   var HTMLPomButtonCopyCodeElement: {
     prototype: HTMLPomButtonCopyCodeElement;
     new (): HTMLPomButtonCopyCodeElement;
-  };
-
-  interface HTMLPomButtonCopyLinkElement extends Components.PomButtonCopyLink, HTMLStencilElement {}
-  var HTMLPomButtonCopyLinkElement: {
-    prototype: HTMLPomButtonCopyLinkElement;
-    new (): HTMLPomButtonCopyLinkElement;
   };
 
   interface HTMLPomHeaderIconItemElement extends Components.PomHeaderIconItem, HTMLStencilElement {}
@@ -221,22 +186,10 @@ declare global {
     new (): HTMLPomTutorialSectionCodeElement;
   };
 
-  interface HTMLPomTutorialSectionCopyElement extends Components.PomTutorialSectionCopy, HTMLStencilElement {}
-  var HTMLPomTutorialSectionCopyElement: {
-    prototype: HTMLPomTutorialSectionCopyElement;
-    new (): HTMLPomTutorialSectionCopyElement;
-  };
-
   interface HTMLPomTutorialSectionImageElement extends Components.PomTutorialSectionImage, HTMLStencilElement {}
   var HTMLPomTutorialSectionImageElement: {
     prototype: HTMLPomTutorialSectionImageElement;
     new (): HTMLPomTutorialSectionImageElement;
-  };
-
-  interface HTMLPomTutorialSectionElement extends Components.PomTutorialSection, HTMLStencilElement {}
-  var HTMLPomTutorialSectionElement: {
-    prototype: HTMLPomTutorialSectionElement;
-    new (): HTMLPomTutorialSectionElement;
   };
 
   interface HTMLPomTutorialElement extends Components.PomTutorial, HTMLStencilElement {}
@@ -259,16 +212,13 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'pom-button-copy-code': HTMLPomButtonCopyCodeElement
-    'pom-button-copy-link': HTMLPomButtonCopyLinkElement
     'pom-header-icon-item': HTMLPomHeaderIconItemElement
     'pom-header-item': HTMLPomHeaderItemElement
     'pom-header': HTMLPomHeaderElement
     'pom-tags-list-item': HTMLPomTagsListItemElement
     'pom-tags-list': HTMLPomTagsListElement
     'pom-tutorial-section-code': HTMLPomTutorialSectionCodeElement
-    'pom-tutorial-section-copy': HTMLPomTutorialSectionCopyElement
     'pom-tutorial-section-image': HTMLPomTutorialSectionImageElement
-    'pom-tutorial-section': HTMLPomTutorialSectionElement
     'pom-tutorial': HTMLPomTutorialElement
     'pom-tutorials-list-item': HTMLPomTutorialsListItemElement
     'pom-tutorials-list': HTMLPomTutorialsListElement
@@ -276,16 +226,13 @@ declare global {
 
   interface ElementTagNameMap {
     'pom-button-copy-code': HTMLPomButtonCopyCodeElement;
-    'pom-button-copy-link': HTMLPomButtonCopyLinkElement;
     'pom-header-icon-item': HTMLPomHeaderIconItemElement;
     'pom-header-item': HTMLPomHeaderItemElement;
     'pom-header': HTMLPomHeaderElement;
     'pom-tags-list-item': HTMLPomTagsListItemElement;
     'pom-tags-list': HTMLPomTagsListElement;
     'pom-tutorial-section-code': HTMLPomTutorialSectionCodeElement;
-    'pom-tutorial-section-copy': HTMLPomTutorialSectionCopyElement;
     'pom-tutorial-section-image': HTMLPomTutorialSectionImageElement;
-    'pom-tutorial-section': HTMLPomTutorialSectionElement;
     'pom-tutorial': HTMLPomTutorialElement;
     'pom-tutorials-list-item': HTMLPomTutorialsListItemElement;
     'pom-tutorials-list': HTMLPomTutorialsListElement;
