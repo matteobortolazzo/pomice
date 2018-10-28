@@ -3,8 +3,8 @@ import marked from 'marked';
 import hljs from 'highlight.js';
 
 @Component({
-  tag: 'pom-tutorial-section-code',
-  styleUrl: 'pom-tutorial-section-code.scss',
+  tag: 'pom-tutorial-code-snippet',
+  styleUrl: 'pom-tutorial-code-snippet.scss',
   shadow: true
 })
 export class TutorialSectionCode {
@@ -19,6 +19,10 @@ export class TutorialSectionCode {
     });
   }
 
+  async copyToClipboard() {
+    await (navigator as any).clipboard.writeText(this.code);
+  }
+
   getReadableLanguage() {
     if (this.language.toLowerCase() === 'csharp')
       return 'C#';
@@ -31,7 +35,12 @@ export class TutorialSectionCode {
       <div class="code-section">
         <div class="code-header">
           <div class="language">{this.getReadableLanguage()}</div>
-          <pom-button-copy-code code={this.code}></pom-button-copy-code>
+          <div class="copy-code-button" onClick={() => this.copyToClipboard()}>
+            <div class="copy-code-button-content">
+              <ion-icon name="copy"></ion-icon>
+              Copy
+            </div>
+          </div>
         </div>
         <div class="code" innerHTML={marked(markCode)}></div>
       </div>

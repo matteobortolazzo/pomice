@@ -17,9 +17,9 @@ export class Tutorial {
 
   constructor() {
     this.renderer.code = (code: string, language: string) =>
-      `<pom-tutorial-section-code language="${language}" code="${code}"></pom-tutorial-section-code>`;
+      `<pom-tutorial-code-snippet language="${language}" code="${code}"></pom-tutorial-code-snippet>`;
     this.renderer.image = (href: string, title: string, text: string) =>
-      `<pom-tutorial-section-image caption="${title}" src="${href}" alt="${text}"></pom-tutorial-section-image>`;
+      `<pom-tutorial-image caption="${title}" src="${href}" alt="${text}"></pom-tutorial-image>`;
     this.renderer.heading = (text, level) => {
       let escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
       return `
