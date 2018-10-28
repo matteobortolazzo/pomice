@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+.share-buttons {
+  &:hover {
+    .popup {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .share-button {
+      color: var(--pom-color-primary-shade);
+    }
+  }
+}
+
+.share-button {
+  cursor: pointer;
+  text-align: right;
+  pointer-events: all;
+  transition: var(--pom-transition);
+
+
+  ion-icon {
+    font-size: 1.4em;
+    margin-right: 2px;
+    transform: translateY(4px);
+  }
+}
+
+.popup {
+  opacity: 0;
+  pointer-events: none;
+  right: 0;
+  top: 10px;
+  width: 120px;
+  border-radius: 2px;
+  position: absolute;
+  transition: var(--pom-transition);
+  padding-top: 20px;
+
+  .popup-inner {
+    padding: 10px;
+    box-shadow: var(--pom-box-shadow);
+    background-color: var(--pom-background-color);
+  }
+
+  pom-share-button {
+    margin-top: 5px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

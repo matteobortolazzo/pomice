@@ -47,6 +47,7 @@ export class Tutorial {
               <ion-icon name="time"></ion-icon>
               <span>{this.duration}min</span>
             </div>
+            <pom-share-buttons tutorialName={this.mainTitle}></pom-share-buttons>
           </div>
         </header>
         <div innerHTML={marked(this.content, { renderer: this.renderer })}></div>
