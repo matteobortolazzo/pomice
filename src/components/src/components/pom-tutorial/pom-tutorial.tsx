@@ -1,19 +1,25 @@
-import {Component, Prop} from "@stencil/core";
+import {Component, Listen, Prop} from "@stencil/core";
 import Moment from "moment";
 import marked from 'marked';
 
 @Component({
   tag: 'pom-tutorial',
   styleUrl: 'pom-tutorial.scss',
-  shadow: true
+  shadow: false
 })
 export class Tutorial {
-  @Prop() mainTitle: string;
+  @Prop() header: string;
   @Prop() createdAt: string;
   @Prop() duration: number;
   @Prop() content: string;
   @Prop() tags: string;
 
+  private sections: {
+    id: string,
+    text: string,
+    top?: number,
+    menuElement?: HTMLElement
+  }[] = [];
   private renderer = new marked.Renderer();
 
   constructor() {
@@ -22,7 +28,11 @@ export class Tutorial {
     this.renderer.image = (href: string, title: string, text: string) =>
       `<pom-tutorial-image caption="${title}" src="${href}" alt="${text}"></pom-tutorial-image>`;
     this.renderer.heading = (text, level) => {
+      if (level !== 2)
+        return `<h${level}>${text}</h${level}>`;
+
       let escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      this.sections.push({id: escapedText, text: text})
       return `
           <h${level} class="section-header" id="${escapedText}">          
             <span>${text}</span>
@@ -33,17 +43,62 @@ export class Tutorial {
     };
   }
 
+  private lastSection: {
+    id: string,
+    text: string,
+    top?: number,
+    menuElement?: HTMLElement
+  };
+
+  @Listen("window:scroll")
+  scrolled() {
+    let top = document.documentElement.scrollTop;
+    let lastSearchSection: any;
+    for(let section of this.sections) {
+      if (top > section.top - 56) {
+        lastSearchSection = section;
+      }
+    }
+
+    if (this.lastSection && this.lastSection.menuElement.classList.contains('on-screen'))
+      this.lastSection.menuElement.classList.remove('on-screen');
+    if (lastSearchSection && !lastSearchSection.menuElement.classList.contains('on-screen')) {
+      lastSearchSection.menuElement.classList.add('on-screen');
+      this.lastSection = lastSearchSection;
+    }
+  }
+
+  scrollToId(e, id: string) {
+    e.preventDefault();
+    document.querySelector(`#${id}`).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'start'
+    });
+  }
+
+  componentDidLoad() {
+    this.sections.map(s => {
+      s.top = document.querySelector(`#${s.id}`).getBoundingClientRect().top;
+      s.menuElement = document.querySelector(`#menu-${s.id}`);
+      console.log(s);
+    });
+  }
+
   render() {
+    const convertedContent = marked(this.content, { renderer: this.renderer });
     return (
       <section>
+        <nav class="sections-menu">
+          <div class="section-menu-title">Content</div>
+          {this.sections.map(section =>
+            <div class="sections-menu-item"><a id={`menu-${section.id}`}
+                                                   onClick={e => this.scrollToId(e, section.id)}
+                                                   href={`#${section.id}`}>{section.text}</a></div>)}
+        </nav>
         <header>
-          <h1>{this.mainTitle}</h1>
-          <pom-tags-list>
-            {
-              this.tags.split(';').map(t =>
-                <pom-tags-list-item mainTitle={t}></pom-tags-list-item>
-            )}
-          </pom-tags-list>
+          <h1>{this.header}</h1>
+          <pom-tags-list tags={this.tags.split(';')}></pom-tags-list>
           <div class="more-info">
             <div class="publish-date">
               <ion-icon name="calendar"></ion-icon>
@@ -53,10 +108,10 @@ export class Tutorial {
               <ion-icon name="time"></ion-icon>
               <span>{this.duration}min</span>
             </div>
-            <pom-share-buttons tutorialName={this.mainTitle}></pom-share-buttons>
+            <pom-share-buttons tutorialName={this.header}></pom-share-buttons>
           </div>
         </header>
-        <div innerHTML={marked(this.content, { renderer: this.renderer })}></div>
+        <div class="content" innerHTML={convertedContent}></div>
       </section>
     );
   }

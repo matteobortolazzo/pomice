@@ -1,4 +1,4 @@
-:host {
+pom-tutorial {
   display: block;
   margin: 0 auto;
   max-width: var(--pom-max-container-width);
@@ -19,6 +19,10 @@ a:visited {
 
 h1 {
   margin: 0 0 var(--pom-margin-bottom);
+}
+
+h2 {
+  padding-top: 1.3em;
 }
 
 .more-info {
@@ -80,4 +84,55 @@ h1 {
 
 p {
   text-align: justify;
+}
+
+.sections-menu {
+  position: fixed;
+  right: 10px;
+  top: 56px;
+  font-size: 0.8em;
+
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .section-menu-title {
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    color: var(--pom-text-color-2)
+  }
+
+  .sections-menu-item {
+    padding: 5px 0;
+  }
+
+  a,
+  a:link,
+  a:active,
+  a:visited {
+    display: block;
+    position: relative;
+    transform-origin: 50% 100%;
+    color: var(--pom-text-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -20px;
+      width: 2px;
+      opacity: 0;
+      background-color: var(--pom-color-primary);
+    }
+
+    &.on-screen {
+      color: var(--pom-color-primary);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
 }

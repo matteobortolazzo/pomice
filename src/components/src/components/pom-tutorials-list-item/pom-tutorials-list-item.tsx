@@ -7,7 +7,7 @@ import Moment from "moment";
   shadow: true
 })
 export class TutorialsListItem {
-  @Prop() mainTitle: string;
+  @Prop() header: string;
   @Prop() shortDescription: string;
   @Prop() createdAt: Date;
   @Prop() tags: string;
@@ -15,13 +15,8 @@ export class TutorialsListItem {
   render() {
     return (
       <div class="tutorial">
-        <pom-tags-list>
-          {
-            this.tags.split(';').map(t =>
-              <pom-tags-list-item mainTitle={t}></pom-tags-list-item>
-            )}
-        </pom-tags-list>
-        <div class="title">{this.mainTitle}</div>
+        <pom-tags-list tags={this.tags.split(';')}></pom-tags-list>
+        <div class="title">{this.header}</div>
         <div class="description">{this.shortDescription}</div>
         <div class="date">{Moment(this.createdAt).format('ll')}</div>
       </div>

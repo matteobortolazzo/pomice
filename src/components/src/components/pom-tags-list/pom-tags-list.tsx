@@ -6,13 +6,14 @@ import {Component, Prop} from "@stencil/core";
   shadow: false
 })
 export class TutorialsListItem {
-  @Prop() title: string;
-  @Prop() slug: string;
+  @Prop() tags: string[];
 
   render() {
     return (
       <div class="tags">
-        <slot />
+        {
+          this.tags.map(t => <div class="tag">{t}</div>)
+        }
       </div>
     );
   }

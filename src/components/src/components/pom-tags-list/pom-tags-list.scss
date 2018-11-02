@@ -1,7 +1,13 @@
 .tags {
   display: flex;
 
-  pom-tags-list-item {
+  .tag {
     margin-right: calc(var(--pom-margin-end) / 2);
+    box-shadow: var(--pom-box-shadow);
+    color: var(--pom-text-color-contrast);
+    font-size: var(--pom-font-size-smaller);
+    background-color: var(--pom-color-primary);
+    padding: 2px var(--pom-padding-end) 2px var(--pom-padding-start);
+    border-radius: calc(calc(calc(var(--pom-font-size-small) + var(--pom-padding-end)) + var(--pom-padding-start)) / 2);
   }
 }
