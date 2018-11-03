@@ -1,10 +1,5 @@
-:host {
-  display: block;
-  margin: 0 auto;
-  max-width: var(--pom-max-container-width);
-}
-
 .tutorial {
+  max-width: 600px;
   background-color: var(--item-background-color, var(--pom-background-color));
   padding: var(--pom-padding-big-top) var(--pom-padding-big-end) var(--pom-padding-big-bottom) var(--pom-padding-big-start);
 

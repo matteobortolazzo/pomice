@@ -86,33 +86,37 @@ export class Tutorial {
   }
 
   render() {
-    const convertedContent = marked(this.content, { renderer: this.renderer });
+    const convertedContent = marked(this.content, {renderer: this.renderer});
     return (
-      <section>
-        <nav class="sections-menu">
-          <div class="section-menu-title">Content</div>
-          {this.sections.map(section =>
-            <div class="sections-menu-item"><a id={`menu-${section.id}`}
-                                                   onClick={e => this.scrollToId(e, section.id)}
-                                                   href={`#${section.id}`}>{section.text}</a></div>)}
-        </nav>
-        <header>
-          <h1>{this.header}</h1>
-          <pom-tags-list tags={this.tags.split(';')}></pom-tags-list>
-          <div class="more-info">
-            <div class="publish-date">
-              <ion-icon name="calendar"></ion-icon>
-              <span>{Moment(this.createdAt).format('ll')}</span>
+      [
+        <section>
+          <header>
+            <h1>{this.header}</h1>
+            <pom-tags-list tags={this.tags.split(';')}></pom-tags-list>
+            <div class="more-info">
+              <div class="publish-date">
+                <ion-icon name="calendar"></ion-icon>
+                <span>{Moment(this.createdAt).format('ll')}</span>
+              </div>
+              <div class="time-to-read">
+                <ion-icon name="time"></ion-icon>
+                <span>{this.duration}min</span>
+              </div>
+              <pom-share-buttons tutorialName={this.header}></pom-share-buttons>
             </div>
-            <div class="time-to-read">
-              <ion-icon name="time"></ion-icon>
-              <span>{this.duration}min</span>
-            </div>
-            <pom-share-buttons tutorialName={this.header}></pom-share-buttons>
+          </header>
+          <article innerHTML={convertedContent}></article>
+        </section>,
+        <nav>
+          <div class="nav-inner">
+            <div class="section-menu-title">Content</div>
+            {this.sections.map(section =>
+              <div class="sections-menu-item"><a id={`menu-${section.id}`}
+                onClick={e => this.scrollToId(e, section.id)}
+                href={`#${section.id}`}>{section.text}</a></div>)}
           </div>
-        </header>
-        <div class="content" innerHTML={convertedContent}></div>
-      </section>
+        </nav>
+      ]
     );
   }
 }
