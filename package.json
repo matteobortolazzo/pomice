@@ -1,8 +1,8 @@
 {
-  "name": "@stencil/starter",
+  "name": "@matteobortolazzo/pomice",
   "private": true,
-  "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "version": "1.0.0",
+  "description": "Matteo Bortolazzo - Person blog",
   "scripts": {
     "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve",
@@ -19,12 +19,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
+    "url": "git+https://github.com/matteobortolazzo/pomice.git"
   },
-  "author": "Ionic Team",
+  "author": "Matteo Bortolazzo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
+    "url": "https://github.com/matteobortolazzo/pomice"
   },
-  "homepage": "https://github.com/ionic-team/stencil"
+  "homepage": "https://github.com/matteobortolazzo/pomice",
+  "devDependencies": {
+    "workbox-build": "3.4.1"
+  }
 }
