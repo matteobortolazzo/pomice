@@ -21,11 +21,11 @@ export namespace Components {
     'url'?: string;
   }
 
-  interface PomHeaderItem {
+  interface PomHeaderTextItem {
     'description': string;
     'url': string;
   }
-  interface PomHeaderItemAttributes extends StencilHTMLAttributes {
+  interface PomHeaderTextItemAttributes extends StencilHTMLAttributes {
     'description'?: string;
     'url'?: string;
   }
@@ -42,10 +42,10 @@ export namespace Components {
   }
 
   interface PomShareButtons {
-    'tutorialName': string;
+    'tutorialTitle': string;
   }
   interface PomShareButtonsAttributes extends StencilHTMLAttributes {
-    'tutorialName'?: string;
+    'tutorialTitle'?: string;
   }
 
   interface PomTagsList {
@@ -110,7 +110,7 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'PomHeaderIconItem': Components.PomHeaderIconItem;
-    'PomHeaderItem': Components.PomHeaderItem;
+    'PomHeaderTextItem': Components.PomHeaderTextItem;
     'PomHeader': Components.PomHeader;
     'PomShareButtons': Components.PomShareButtons;
     'PomTagsList': Components.PomTagsList;
@@ -123,7 +123,7 @@ declare global {
 
   interface StencilIntrinsicElements {
     'pom-header-icon-item': Components.PomHeaderIconItemAttributes;
-    'pom-header-item': Components.PomHeaderItemAttributes;
+    'pom-header-text-item': Components.PomHeaderTextItemAttributes;
     'pom-header': Components.PomHeaderAttributes;
     'pom-share-buttons': Components.PomShareButtonsAttributes;
     'pom-tags-list': Components.PomTagsListAttributes;
@@ -141,10 +141,10 @@ declare global {
     new (): HTMLPomHeaderIconItemElement;
   };
 
-  interface HTMLPomHeaderItemElement extends Components.PomHeaderItem, HTMLStencilElement {}
-  var HTMLPomHeaderItemElement: {
-    prototype: HTMLPomHeaderItemElement;
-    new (): HTMLPomHeaderItemElement;
+  interface HTMLPomHeaderTextItemElement extends Components.PomHeaderTextItem, HTMLStencilElement {}
+  var HTMLPomHeaderTextItemElement: {
+    prototype: HTMLPomHeaderTextItemElement;
+    new (): HTMLPomHeaderTextItemElement;
   };
 
   interface HTMLPomHeaderElement extends Components.PomHeader, HTMLStencilElement {}
@@ -197,7 +197,7 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'pom-header-icon-item': HTMLPomHeaderIconItemElement
-    'pom-header-item': HTMLPomHeaderItemElement
+    'pom-header-text-item': HTMLPomHeaderTextItemElement
     'pom-header': HTMLPomHeaderElement
     'pom-share-buttons': HTMLPomShareButtonsElement
     'pom-tags-list': HTMLPomTagsListElement
@@ -210,7 +210,7 @@ declare global {
 
   interface ElementTagNameMap {
     'pom-header-icon-item': HTMLPomHeaderIconItemElement;
-    'pom-header-item': HTMLPomHeaderItemElement;
+    'pom-header-text-item': HTMLPomHeaderTextItemElement;
     'pom-header': HTMLPomHeaderElement;
     'pom-share-buttons': HTMLPomShareButtonsElement;
     'pom-tags-list': HTMLPomTagsListElement;

@@ -7,9 +7,9 @@ import Moment from "moment";
   shadow: true
 })
 export class TutorialsListItem {
+  @Prop() createdAt: Date;
   @Prop() header: string;
   @Prop() shortDescription: string;
-  @Prop() createdAt: Date;
   @Prop() tags: string;
 
   render() {

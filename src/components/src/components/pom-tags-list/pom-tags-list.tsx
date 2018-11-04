@@ -11,9 +11,7 @@ export class TutorialsListItem {
   render() {
     return (
       <div class="tags">
-        {
-          this.tags.map(t => <div class="tag">{t}</div>)
-        }
+        {this.tags.map(t => <div class="tag">{t}</div>)}
       </div>
     );
   }

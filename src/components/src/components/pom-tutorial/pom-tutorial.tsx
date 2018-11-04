@@ -8,19 +8,15 @@ import marked from 'marked';
   shadow: false
 })
 export class Tutorial {
-  @Prop() header: string;
+  private lastSection: TutorialSection;
+  private sections: TutorialSection[] = [];
+  private renderer = new marked.Renderer();
+
+  @Prop() content: string;
   @Prop() createdAt: string;
   @Prop() duration: number;
-  @Prop() content: string;
+  @Prop() header: string;
   @Prop() tags: string;
-
-  private sections: {
-    id: string,
-    text: string,
-    top?: number,
-    menuElement?: HTMLElement
-  }[] = [];
-  private renderer = new marked.Renderer();
 
   constructor() {
     this.renderer.code = (code: string, language: string) =>
@@ -43,13 +39,6 @@ export class Tutorial {
     };
   }
 
-  private lastSection: {
-    id: string,
-    text: string,
-    top?: number,
-    menuElement?: HTMLElement
-  };
-
   @Listen("window:scroll")
   scrolled() {
     let top = document.documentElement.scrollTop;
@@ -68,20 +57,20 @@ export class Tutorial {
     }
   }
 
-  scrollToId(e, id: string) {
-    e.preventDefault();
-    document.querySelector(`#${id}`).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'start'
-    });
-  }
-
   componentDidLoad() {
     this.sections.map(s => {
       s.top = document.querySelector(`#${s.id}`).getBoundingClientRect().top;
       s.menuElement = document.querySelector(`#menu-${s.id}`);
       console.log(s);
+    });
+  }
+
+  private scrollToId(e, id: string) {
+    e.preventDefault();
+    document.querySelector(`#${id}`).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'start'
     });
   }
 
@@ -102,7 +91,7 @@ export class Tutorial {
                 <ion-icon name="time"></ion-icon>
                 <span>{this.duration}min</span>
               </div>
-              <pom-share-buttons tutorialName={this.header}></pom-share-buttons>
+              <pom-share-buttons tutorialTitle={this.header}></pom-share-buttons>
             </div>
           </header>
           <article innerHTML={convertedContent}></article>
@@ -119,4 +108,11 @@ export class Tutorial {
       ]
     );
   }
+}
+
+interface TutorialSection {
+  id: string,
+  text: string,
+  top?: number,
+  menuElement?: HTMLElement
 }

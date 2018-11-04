@@ -7,19 +7,20 @@ import {getScrollPercent} from "./pom-header.functions";
   shadow: true
 })
 export class Header {
-  keys = {37: 1, 38: 1, 39: 1, 40: 1};
-  @Prop() mainTitle: string;
-  @Prop() subTitle: string;
-  @Prop() showPercentage: boolean = false;
   @Element() rootEl: HTMLElement;
-  @State() lastPercentage: number;
+
   @State() menuOpened = false;
+
+  @Prop() mainTitle: string;
+  @Prop() showPercentage = false;
+  @Prop() subTitle: string;
+
+  @State() lastPercentage = 0;
+
   @Watch('lastPercentage')
   watchHandler(newValue: number, oldValue: number) {
-    this.rootEl.style.setProperty("--scroll-percentage",
-      (newValue - 100) + "%")
-    this.rootEl.style.setProperty("--nav-translate-current",
-      newValue > oldValue ? "var(--nav-translate-end)" : "var(--nav-translate-start)")
+    this.rootEl.style.setProperty("--scroll-percentage",(newValue - 100) + "%");
+    this.rootEl.style.setProperty("--nav-translate-current",newValue > oldValue ? "var(--nav-translate-end)" : "var(--nav-translate-start)");
   }
 
   @Listen("window:scroll")
@@ -27,7 +28,7 @@ export class Header {
     this.lastPercentage = getScrollPercent();
   }
 
-  toggle() {
+  private toggle() {
     this.menuOpened = !this.menuOpened;
   }
 

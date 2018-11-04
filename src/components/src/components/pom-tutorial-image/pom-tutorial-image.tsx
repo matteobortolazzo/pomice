@@ -6,9 +6,9 @@ import {Component, Prop} from "@stencil/core";
   shadow: true
 })
 export class TutorialSectionImage {
-  @Prop() src: string;
   @Prop() alt: string;
   @Prop() caption: string;
+  @Prop() src: string;
 
   render() {
     return (

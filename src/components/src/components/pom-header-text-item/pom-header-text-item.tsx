@@ -1,11 +1,11 @@
 import {Component, Prop} from "@stencil/core";
 
 @Component({
-  tag: 'pom-header-item',
-  styleUrl: 'pom-header-item.scss',
+  tag: 'pom-header-text-item',
+  styleUrl: 'pom-header-text-item.scss',
   shadow: true
 })
-export class HeaderItem {
+export class HeaderTextItem {
   @Prop() description: string;
   @Prop() url: string;
 

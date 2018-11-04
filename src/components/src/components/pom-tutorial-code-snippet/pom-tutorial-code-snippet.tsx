@@ -1,6 +1,7 @@
 import {Component, Prop} from "@stencil/core";
 import marked from 'marked';
 import hljs from 'highlight.js';
+import {getReadableLanguage} from "./pom-tutorial-code.snipped.functions";
 
 @Component({
   tag: 'pom-tutorial-code-snippet',
@@ -19,14 +20,8 @@ export class TutorialSectionCode {
     });
   }
 
-  async copyToClipboard() {
+  private async copyToClipboard() {
     await (navigator as any).clipboard.writeText(this.code);
-  }
-
-  getReadableLanguage() {
-    if (this.language.toLowerCase() === 'csharp')
-      return 'C#';
-    return this.language;
   }
 
   render() {
@@ -34,7 +29,7 @@ export class TutorialSectionCode {
     return (
       <div class="code-section">
         <div class="code-header">
-          <div class="language">{this.getReadableLanguage()}</div>
+          <div class="language">{getReadableLanguage(this.language)}</div>
           <div class="copy-code-button" onClick={() => this.copyToClipboard()}>
             <div class="copy-code-button-content">
               <ion-icon name="copy"></ion-icon>
