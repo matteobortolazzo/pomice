@@ -1,0 +1,152 @@
+a,
+a:link,
+a:active,
+a:visited {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--pom-color-primary);
+}
+
+pom-tutorial {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+section {
+  grid-column: 2;
+  padding: 20px;
+  max-width: 600px;
+}
+
+header {
+  .more-info {
+    display: flex;
+    font-size: 0.8em;
+    position: relative;
+    color: var(--pom-text-color-2);
+    margin-top: var(--pom-margin-top);
+
+    ion-icon {
+      font-size: 1.4em;
+      margin-right: 2px;
+      transform: translateY(4px);
+    }
+
+    .publish-date {
+      font-weight: bold;
+    }
+
+    .time-to-read {
+      margin-left: 10px;
+    }
+
+    pom-share-buttons {
+      z-index: 30;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+article {
+  h1 {
+    margin: 0 0 var(--pom-margin-bottom);
+  }
+
+  h2 {
+    padding-top: 1.3em;
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  .section-header {
+
+    &:hover {
+
+      ion-icon {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    ion-icon {
+      opacity: 0;
+      margin-bottom: -4px;
+      pointer-events: none;
+      transition: var(--pom-transition);
+
+      &:hover {
+        color: var(--pom-color-primary-shade);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
+
+nav {
+  position: relative;
+  grid-column: 3;
+
+  display: none;
+  justify-content: center;
+
+  .nav-inner {
+    top: 76px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-menu-title {
+    font-size: 0.8em;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    color: var(--pom-text-color-2)
+  }
+
+  .sections-menu-item {
+    padding: 5px 0;
+  }
+
+  a,
+  a:link,
+  a:active,
+  a:visited {
+    display: block;
+    position: relative;
+    transform-origin: 50% 100%;
+    color: var(--pom-text-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -20px;
+      width: 2px;
+      opacity: 0;
+      background-color: var(--pom-color-primary);
+    }
+
+    &.on-screen {
+      color: var(--pom-color-primary);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  nav {
+    display: flex;
+  }
+}

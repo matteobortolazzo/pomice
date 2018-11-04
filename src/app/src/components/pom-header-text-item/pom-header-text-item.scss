@@ -1,0 +1,12 @@
+.menu-button {
+  color: var(--pom-background-color);
+  padding-left: var(--menu-items-distance);
+}
+
+a,
+a:link,
+a:visited,
+a:focus {
+  text-decoration: none;
+  color: currentColor;
+}

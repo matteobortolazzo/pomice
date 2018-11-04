@@ -1,0 +1,142 @@
+:host {
+  --scroll-percentage: -100%;
+
+  --nav-translate-start: 0;
+  --nav-translate-end: calc(var(--pom-padding-top) - 100%);
+  --nav-translate-current: var(--nav-translate-start);
+
+  z-index: 3;
+}
+
+a,
+a:link,
+a:visited,
+a:focus {
+  text-decoration: none;
+  color: var(--pom-background-color);
+}
+
+nav {
+  position: relative;
+  transition: var(--pom-transition);
+  box-shadow: var(--pom-box-shadow);
+  color: var(--pom-text-color-contrast);
+  background-color: var(--pom-color-primary);
+  transform: translateY(var(--nav-translate-current));
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    transform: translateX(var(--scroll-percentage));
+    transition: var(--pom-transition);
+    background-color: var(--pom-color-secondary);
+  }
+
+  .nav-inner {
+    display: grid;
+    align-items: center;
+    box-sizing: border-box;
+    grid-template-columns: auto 1fr auto;
+    overflow: hidden;
+    padding: var(--pom-padding-top) var(--pom-padding-big-end) var(--pom-padding-bottom) var(--pom-padding-big-start);
+
+    &.show-menu {
+      .main {
+        transform: translateY(calc(100% + 20px));
+      }
+      .menu {
+        .toggle-button {
+          &.menu {
+            opacity: 0;
+          }
+          &.close {
+            opacity: 1;
+          }
+        }
+        .items {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .main {
+    grid-column: 1;
+    transition: var(--pom-transition);
+
+    a {
+      display: block;
+    }
+
+    .title {
+      font-size: var(--pom-font-size-default);
+    }
+
+    .subtitle {
+      margin-top: -4px;
+      font-size: var(--pom-font-size-small);
+      color: var(--pom-text-color-contrast-2);
+    }
+  }
+
+  .menu {
+    display: flex;
+    grid-column: 3;
+    align-items: center;
+    --menu-items-distance: 20px;
+
+    .menu-toggle-container {
+      position: relative;
+      transform: translateY(2px);
+    }
+
+    .toggle-button {
+      display: block;
+      pointer-events: all;
+      transition: var(--pom-transition);
+      font-size: var(--pom-font-size-huge);
+
+      &.menu {
+        opacity: 1;
+      }
+
+      &.close {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        position: absolute;
+      }
+    }
+
+    .items {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      position: absolute;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: var(--pom-transition);
+    }
+  }
+
+  @media screen and (min-width: 480px) {
+    .menu {
+      .toggle-button {
+        display: none;
+        pointer-events: all;
+      }
+
+      .items {
+        position: initial;
+        transform: translateY(0);
+      }
+    }
+  }
+}

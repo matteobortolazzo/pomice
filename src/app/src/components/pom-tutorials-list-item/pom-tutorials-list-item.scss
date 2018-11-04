@@ -1,0 +1,26 @@
+.tutorial {
+  max-width: 600px;
+  background-color: var(--item-background-color, var(--pom-background-color));
+  padding: var(--pom-padding-big-top) var(--pom-padding-big-end) var(--pom-padding-big-bottom) var(--pom-padding-big-start);
+
+  .title {
+    font-weight: bold;
+    font-size: var(--pom-font-size-big);
+    margin-top: var(--pom-margin-top);
+  }
+
+  .description {
+    text-align: justify;
+    margin-top: var(--pom-margin-top);
+    font-size: var(--pom-font-size-default);
+    color: var(--pom-text-color-2);
+  }
+
+  .date {
+    margin-top: var(--pom-margin-top);
+    font-size: var(--pom-font-size-small);
+    text-align: right;
+    font-weight: bold;
+    color: var(--pom-text-color-2);
+  }
+}
