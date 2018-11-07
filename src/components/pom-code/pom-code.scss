@@ -3,6 +3,7 @@
 .code-section {
   padding: 10px;
   border-radius: 5px;
+  box-shadow: var(--pom-box-shadow);
   color: var(--pom-background-color-2);
   background-color: var(--pom-text-color);
 
@@ -55,21 +56,23 @@
   }
 
   &::after {
-    color: var(--pom-background-color-2);
-    font-size: 12px;
+    color: var(--pom-text-color);
     opacity: 0;
     content: 'Copied!';
     position: absolute;
-    top: 120%;
+    top: 0;
     right: 0;
-    padding: 2px 5px;
-    background: var(--pom-text-color);
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    padding: 5px 0;
+    background: var(--pom-background-color);
     border-radius: 2px;
     box-shadow: var(--pom-box-shadow);
   }
 
   &:not(:active)::after {
-    transition: opacity 2s linear;
+    transition: opacity 2s ease-in-out;
   }
 
   &:active::after {

@@ -10,7 +10,7 @@
       pointer-events: auto;
     }
     .share-button {
-      color: var(--pom-color-primary-shade);
+      color: var(--pom-color-secondary-shade);
     }
   }
 }
@@ -20,7 +20,6 @@
   text-align: right;
   pointer-events: all;
   transition: var(--pom-transition);
-
 
   ion-icon {
     font-size: 1.4em;
@@ -50,10 +49,6 @@
   margin-top: 10px;
   transition: var(--pom-transition);
 
-  &:hover {
-    transform: scale(1.05);
-  }
-
   &:first-child {
     margin-top: 0;
   }
@@ -64,20 +59,22 @@
   a:visited {
     display: flex;
     text-decoration: none;
-    color: var(--pom-color-primary);
+    color: var(--pom-text-color);
   }
 
   ion-icon {
     font-size: 1.4em;
+    margin-right: var(--pom-margin-end);
   }
 
-  .description {
-    margin-left: 10px;
-    color: var(--pom-text-color);
-    transition: var(--pom-transition);
+  &:hover {
+    transform: scale(1.05);
 
-    &:hover {
-      color: var(--pom-color-primary-shade);
+    a,
+    a:link,
+    a:active,
+    a:visited {
+      color: var(--pom-color-secondary-shade);
     }
   }
 }

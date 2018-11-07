@@ -23,7 +23,7 @@ export class AppHome {
             <div class="post">
               <pom-tags-list tags={post.tags.split(';')}></pom-tags-list>
               <div class="heading">{post.heading}</div>
-              <div class="description">{post.description}</div>
+              <p class="description">{post.description}</p>
               <div class="date">{Moment(post.date).format('ll')}</div>
             </div>
           </stencil-route-link>)

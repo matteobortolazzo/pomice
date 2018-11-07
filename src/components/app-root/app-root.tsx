@@ -22,7 +22,13 @@ export class AppRoot {
             <stencil-route url='/posts/:id/:slug' component='app-post'/>
           </stencil-route-switch>
         </stencil-router>
-      </main>
+      </main>,
+      <footer>
+        <div class="description">Check the code on GitHub <a href="https://github.com/matteobortolazzo/pomice">here</a>!
+          Feel free to open an issue if something goes wrong or is missing.
+        </div>
+        <div>Matteo Bortolazzo - 2018</div>
+      </footer>
     ]);
   }
 }

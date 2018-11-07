@@ -11,7 +11,9 @@ export function renderHeading(text: string, level: number, sections: TutorialSec
     return `<h${level}>${text}</h${level}>`;
 
   let escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-  sections.push({id: escapedText, text: text});
+  if (!sections.find(s => s.id === escapedText)) {
+    sections.push({id: escapedText, text: text});
+  }
   return `
           <h${level} class="section-header" id="${escapedText}">          
             <span>${text}</span>
