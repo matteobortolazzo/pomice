@@ -1,30 +1,34 @@
 import {Component} from '@stencil/core';
-import {getTutorials} from "../../service/service.functions";
-import {TutorialPreview} from "../../service/service.models";
+import Moment from "moment";
+import {Post} from "../../service/service.models";
+import {getPosts} from "../../service/service.functions";
 
 @Component({
   tag: 'app-home',
-  styleUrl: 'app-home.css',
+  styleUrl: 'app-home.scss',
   shadow: false
 })
 export class AppHome {
-  private tutorials: TutorialPreview[] = [];
+  private posts: Post[] = [];
 
   async componentWillLoad() {
-    this.tutorials = await getTutorials();
+    this.posts = await getPosts();
   }
 
   render() {
     return (
-      <pom-tutorials-list>
-        {this.tutorials.map(tutorial =>
-          (<stencil-route-link url={`/tutorials/${tutorial.id}/${tutorial.slug}`}>
-            <pom-tutorials-list-item createdAt={tutorial.createdAt}
-            description={tutorial.description} tags={tutorial.tags}
-            tutorialTitle={tutorial.title}></pom-tutorials-list-item>
+      <div class="posts">
+        {this.posts.map(post =>
+          (<stencil-route-link url={`/posts/${post.id}/${post.slug}`}>
+            <div class="post">
+              <pom-tags-list tags={post.tags.split(';')}></pom-tags-list>
+              <div class="heading">{post.heading}</div>
+              <div class="description">{post.description}</div>
+              <div class="date">{Moment(post.date).format('ll')}</div>
+            </div>
           </stencil-route-link>)
         )}
-      </pom-tutorials-list>
+      </div>
     );
   }
 }

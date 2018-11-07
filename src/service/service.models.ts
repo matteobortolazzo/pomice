@@ -1,18 +1,18 @@
-export interface TutorialPreview {
+export interface Post {
   id: string;
-  title: string;
-  slug: string;
-  createdAt: Date;
+  heading: string;
   description: string;
+  slug: string;
+  date: Date;
+  duration: number;
   tags: string;
+  content: string;
 }
 
-export interface Tutorial {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: Date;
-  duration: number;
-  content: string;
-  tags: string;
-}
+export const ListItemFields  = [
+  'heading', 'description', 'slug', 'date', 'tags'
+];
+
+export const DetailFields  = [
+  'heading', 'description', 'slug', 'date', 'duration', 'tags', 'content'
+];

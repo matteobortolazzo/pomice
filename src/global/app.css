@@ -1,16 +1,55 @@
-/*
-  Global App CSS
-  ----------------------
-  Use this file for styles that should be applied to all components.
-  For example, "font-family" within the "body" selector is a CSS property
-  most apps will want applied to all components.
+body {
+  --pom-margin-top: 10px;
+  --pom-margin-end: 10px;
+  --pom-margin-bottom: 10px;
+  --pom-margin-start: 10px;
 
-  Any global CSS variables should also be applied here.
-*/
+  --pom-padding-top: 10px;
+  --pom-padding-end: 10px;
+  --pom-padding-bottom: 10px;
+  --pom-padding-start: 10px;
 
+  --pom-padding-big-top: 30px;
+  --pom-padding-big-end: 20px;
+  --pom-padding-big-bottom: 30px;
+  --pom-padding-big-start: 20px;
+
+  --pom-font-size-smaller: 0.6em;
+  --pom-font-size-small: 0.8em;
+  --pom-font-size-default: 1em;
+  --pom-font-size-medium: 1.2em;
+  --pom-font-size-big: 1.4em;
+  --pom-font-size-huge: 1.6em;
+
+  --pom-text-color: #424242;
+  --pom-text-color-2: #6c7a89;
+  --pom-text-color-contrast: #ffffff;
+  --pom-text-color-contrast-2: #dddddd;
+  --pom-background-color: #ffffff;
+  --pom-background-color-2: #eeeeee;
+
+  --pom-color-primary: #1976D2;
+  --pom-color-primary-shade: #3171e0;
+  --pom-color-secondary: #009688;
+  --pom-color-secondary-shade: #008478;
+
+  --pom-max-container-width: 600px;
+  --pom-box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.2);
+  --pom-transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+}
 
 body {
   margin: 0px;
   padding: 0px;
+  color: var(--pom-text-color);
+  background-color: var(--pom-background-color);
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+a,
+a:link,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: var(--pom-text-color);
 }

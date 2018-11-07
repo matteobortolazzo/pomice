@@ -9,7 +9,7 @@ import {generateSocialButtons} from "./pom-share-buttons.functions";
 export class ShareButtons {
   private pageUrl = window.location.href.toString().split('#')[0];
 
-  @Prop() tutorialTitle: string;
+  @Prop() heading: string;
 
   render() {
     return(
@@ -17,7 +17,7 @@ export class ShareButtons {
         <div class="share-button"><ion-icon name="share-alt"></ion-icon> Share</div>
         <div class="popup">
           <div class="popup-inner">
-            {generateSocialButtons(this.tutorialTitle, this.pageUrl).map(b =>
+            {generateSocialButtons(this.heading, this.pageUrl).map(b =>
               <div class="social-button" >
                 <a href={b.url} target={b.icon === 'mail' ? '' : '_blank'}>
                   <ion-icon name={b.icon}></ion-icon>

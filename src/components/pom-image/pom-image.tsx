@@ -1,8 +1,8 @@
 import {Component, Prop} from "@stencil/core";
 
 @Component({
-  tag: 'pom-tutorial-image',
-  styleUrl: 'pom-tutorial-image.scss',
+  tag: 'pom-image',
+  styleUrl: 'pom-image.scss',
   shadow: true
 })
 export class TutorialSectionImage {

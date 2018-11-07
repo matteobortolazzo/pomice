@@ -1,11 +1,11 @@
 import {Component, Prop} from "@stencil/core";
 import marked from 'marked';
 import hljs from 'highlight.js';
-import {getReadableLanguage} from "./pom-tutorial-code.snipped.functions";
+import {getReadableLanguage} from "./pom-code.functions";
 
 @Component({
-  tag: 'pom-tutorial-code-snippet',
-  styleUrl: 'pom-tutorial-code-snippet.scss',
+  tag: 'pom-code',
+  styleUrl: 'pom-code.scss',
   shadow: true
 })
 export class TutorialSectionCode {

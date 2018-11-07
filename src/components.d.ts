@@ -8,7 +8,6 @@
 import '@stencil/core';
 
 import '@stencil/router';
-import '@stencil/state-tunnel';
 import {
   MatchResults,
 } from '@stencil/router';
@@ -19,14 +18,23 @@ export namespace Components {
   interface AppHome {}
   interface AppHomeAttributes extends StencilHTMLAttributes {}
 
+  interface AppPost {
+    'match': MatchResults;
+  }
+  interface AppPostAttributes extends StencilHTMLAttributes {
+    'match'?: MatchResults;
+  }
+
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
-  interface AppTutorial {
-    'match': MatchResults;
+  interface PomCode {
+    'code': string;
+    'language': string;
   }
-  interface AppTutorialAttributes extends StencilHTMLAttributes {
-    'match'?: MatchResults;
+  interface PomCodeAttributes extends StencilHTMLAttributes {
+    'code'?: string;
+    'language'?: string;
   }
 
   interface PomHeaderIconItem {
@@ -35,15 +43,6 @@ export namespace Components {
   }
   interface PomHeaderIconItemAttributes extends StencilHTMLAttributes {
     'icon'?: string;
-    'url'?: string;
-  }
-
-  interface PomHeaderTextItem {
-    'description': string;
-    'url': string;
-  }
-  interface PomHeaderTextItemAttributes extends StencilHTMLAttributes {
-    'description'?: string;
     'url'?: string;
   }
 
@@ -58,11 +57,22 @@ export namespace Components {
     'subTitle'?: string;
   }
 
+  interface PomImage {
+    'alt': string;
+    'caption': string;
+    'src': string;
+  }
+  interface PomImageAttributes extends StencilHTMLAttributes {
+    'alt'?: string;
+    'caption'?: string;
+    'src'?: string;
+  }
+
   interface PomShareButtons {
-    'tutorialTitle': string;
+    'heading': string;
   }
   interface PomShareButtonsAttributes extends StencilHTMLAttributes {
-    'tutorialTitle'?: string;
+    'heading'?: string;
   }
 
   interface PomTagsList {
@@ -71,90 +81,31 @@ export namespace Components {
   interface PomTagsListAttributes extends StencilHTMLAttributes {
     'tags'?: string[];
   }
-
-  interface PomTutorialCodeSnippet {
-    'code': string;
-    'language': string;
-  }
-  interface PomTutorialCodeSnippetAttributes extends StencilHTMLAttributes {
-    'code'?: string;
-    'language'?: string;
-  }
-
-  interface PomTutorialImage {
-    'alt': string;
-    'caption': string;
-    'src': string;
-  }
-  interface PomTutorialImageAttributes extends StencilHTMLAttributes {
-    'alt'?: string;
-    'caption'?: string;
-    'src'?: string;
-  }
-
-  interface PomTutorial {
-    'content': string;
-    'createdAt': Date;
-    'duration': number;
-    'tags': string;
-    'tutorialTitle': string;
-  }
-  interface PomTutorialAttributes extends StencilHTMLAttributes {
-    'content'?: string;
-    'createdAt'?: Date;
-    'duration'?: number;
-    'tags'?: string;
-    'tutorialTitle'?: string;
-  }
-
-  interface PomTutorialsListItem {
-    'createdAt': Date;
-    'description': string;
-    'tags': string;
-    'tutorialTitle': string;
-  }
-  interface PomTutorialsListItemAttributes extends StencilHTMLAttributes {
-    'createdAt'?: Date;
-    'description'?: string;
-    'tags'?: string;
-    'tutorialTitle'?: string;
-  }
-
-  interface PomTutorialsList {}
-  interface PomTutorialsListAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'AppHome': Components.AppHome;
+    'AppPost': Components.AppPost;
     'AppRoot': Components.AppRoot;
-    'AppTutorial': Components.AppTutorial;
+    'PomCode': Components.PomCode;
     'PomHeaderIconItem': Components.PomHeaderIconItem;
-    'PomHeaderTextItem': Components.PomHeaderTextItem;
     'PomHeader': Components.PomHeader;
+    'PomImage': Components.PomImage;
     'PomShareButtons': Components.PomShareButtons;
     'PomTagsList': Components.PomTagsList;
-    'PomTutorialCodeSnippet': Components.PomTutorialCodeSnippet;
-    'PomTutorialImage': Components.PomTutorialImage;
-    'PomTutorial': Components.PomTutorial;
-    'PomTutorialsListItem': Components.PomTutorialsListItem;
-    'PomTutorialsList': Components.PomTutorialsList;
   }
 
   interface StencilIntrinsicElements {
     'app-home': Components.AppHomeAttributes;
+    'app-post': Components.AppPostAttributes;
     'app-root': Components.AppRootAttributes;
-    'app-tutorial': Components.AppTutorialAttributes;
+    'pom-code': Components.PomCodeAttributes;
     'pom-header-icon-item': Components.PomHeaderIconItemAttributes;
-    'pom-header-text-item': Components.PomHeaderTextItemAttributes;
     'pom-header': Components.PomHeaderAttributes;
+    'pom-image': Components.PomImageAttributes;
     'pom-share-buttons': Components.PomShareButtonsAttributes;
     'pom-tags-list': Components.PomTagsListAttributes;
-    'pom-tutorial-code-snippet': Components.PomTutorialCodeSnippetAttributes;
-    'pom-tutorial-image': Components.PomTutorialImageAttributes;
-    'pom-tutorial': Components.PomTutorialAttributes;
-    'pom-tutorials-list-item': Components.PomTutorialsListItemAttributes;
-    'pom-tutorials-list': Components.PomTutorialsListAttributes;
   }
 
 
@@ -164,16 +115,22 @@ declare global {
     new (): HTMLAppHomeElement;
   };
 
+  interface HTMLAppPostElement extends Components.AppPost, HTMLStencilElement {}
+  var HTMLAppPostElement: {
+    prototype: HTMLAppPostElement;
+    new (): HTMLAppPostElement;
+  };
+
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
 
-  interface HTMLAppTutorialElement extends Components.AppTutorial, HTMLStencilElement {}
-  var HTMLAppTutorialElement: {
-    prototype: HTMLAppTutorialElement;
-    new (): HTMLAppTutorialElement;
+  interface HTMLPomCodeElement extends Components.PomCode, HTMLStencilElement {}
+  var HTMLPomCodeElement: {
+    prototype: HTMLPomCodeElement;
+    new (): HTMLPomCodeElement;
   };
 
   interface HTMLPomHeaderIconItemElement extends Components.PomHeaderIconItem, HTMLStencilElement {}
@@ -182,16 +139,16 @@ declare global {
     new (): HTMLPomHeaderIconItemElement;
   };
 
-  interface HTMLPomHeaderTextItemElement extends Components.PomHeaderTextItem, HTMLStencilElement {}
-  var HTMLPomHeaderTextItemElement: {
-    prototype: HTMLPomHeaderTextItemElement;
-    new (): HTMLPomHeaderTextItemElement;
-  };
-
   interface HTMLPomHeaderElement extends Components.PomHeader, HTMLStencilElement {}
   var HTMLPomHeaderElement: {
     prototype: HTMLPomHeaderElement;
     new (): HTMLPomHeaderElement;
+  };
+
+  interface HTMLPomImageElement extends Components.PomImage, HTMLStencilElement {}
+  var HTMLPomImageElement: {
+    prototype: HTMLPomImageElement;
+    new (): HTMLPomImageElement;
   };
 
   interface HTMLPomShareButtonsElement extends Components.PomShareButtons, HTMLStencilElement {}
@@ -206,66 +163,28 @@ declare global {
     new (): HTMLPomTagsListElement;
   };
 
-  interface HTMLPomTutorialCodeSnippetElement extends Components.PomTutorialCodeSnippet, HTMLStencilElement {}
-  var HTMLPomTutorialCodeSnippetElement: {
-    prototype: HTMLPomTutorialCodeSnippetElement;
-    new (): HTMLPomTutorialCodeSnippetElement;
-  };
-
-  interface HTMLPomTutorialImageElement extends Components.PomTutorialImage, HTMLStencilElement {}
-  var HTMLPomTutorialImageElement: {
-    prototype: HTMLPomTutorialImageElement;
-    new (): HTMLPomTutorialImageElement;
-  };
-
-  interface HTMLPomTutorialElement extends Components.PomTutorial, HTMLStencilElement {}
-  var HTMLPomTutorialElement: {
-    prototype: HTMLPomTutorialElement;
-    new (): HTMLPomTutorialElement;
-  };
-
-  interface HTMLPomTutorialsListItemElement extends Components.PomTutorialsListItem, HTMLStencilElement {}
-  var HTMLPomTutorialsListItemElement: {
-    prototype: HTMLPomTutorialsListItemElement;
-    new (): HTMLPomTutorialsListItemElement;
-  };
-
-  interface HTMLPomTutorialsListElement extends Components.PomTutorialsList, HTMLStencilElement {}
-  var HTMLPomTutorialsListElement: {
-    prototype: HTMLPomTutorialsListElement;
-    new (): HTMLPomTutorialsListElement;
-  };
-
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement
+    'app-post': HTMLAppPostElement
     'app-root': HTMLAppRootElement
-    'app-tutorial': HTMLAppTutorialElement
+    'pom-code': HTMLPomCodeElement
     'pom-header-icon-item': HTMLPomHeaderIconItemElement
-    'pom-header-text-item': HTMLPomHeaderTextItemElement
     'pom-header': HTMLPomHeaderElement
+    'pom-image': HTMLPomImageElement
     'pom-share-buttons': HTMLPomShareButtonsElement
     'pom-tags-list': HTMLPomTagsListElement
-    'pom-tutorial-code-snippet': HTMLPomTutorialCodeSnippetElement
-    'pom-tutorial-image': HTMLPomTutorialImageElement
-    'pom-tutorial': HTMLPomTutorialElement
-    'pom-tutorials-list-item': HTMLPomTutorialsListItemElement
-    'pom-tutorials-list': HTMLPomTutorialsListElement
   }
 
   interface ElementTagNameMap {
     'app-home': HTMLAppHomeElement;
+    'app-post': HTMLAppPostElement;
     'app-root': HTMLAppRootElement;
-    'app-tutorial': HTMLAppTutorialElement;
+    'pom-code': HTMLPomCodeElement;
     'pom-header-icon-item': HTMLPomHeaderIconItemElement;
-    'pom-header-text-item': HTMLPomHeaderTextItemElement;
     'pom-header': HTMLPomHeaderElement;
+    'pom-image': HTMLPomImageElement;
     'pom-share-buttons': HTMLPomShareButtonsElement;
     'pom-tags-list': HTMLPomTagsListElement;
-    'pom-tutorial-code-snippet': HTMLPomTutorialCodeSnippetElement;
-    'pom-tutorial-image': HTMLPomTutorialImageElement;
-    'pom-tutorial': HTMLPomTutorialElement;
-    'pom-tutorials-list-item': HTMLPomTutorialsListItemElement;
-    'pom-tutorials-list': HTMLPomTutorialsListElement;
   }
 
 

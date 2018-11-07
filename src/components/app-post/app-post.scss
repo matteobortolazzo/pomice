@@ -1,13 +1,4 @@
-a,
-a:link,
-a:active,
-a:visited {
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--pom-color-primary);
-}
-
-pom-tutorial {
+.app-post {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
 }
@@ -19,6 +10,10 @@ section {
 }
 
 header {
+  h1 {
+    font-size: 1.7em;
+  }
+
   .more-info {
     display: flex;
     font-size: 0.8em;
@@ -50,10 +45,6 @@ header {
 }
 
 article {
-  h1 {
-    margin: 0 0 var(--pom-margin-bottom);
-  }
-
   h2 {
     padding-top: 1.3em;
   }

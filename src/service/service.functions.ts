@@ -1,19 +1,17 @@
-import {Tutorial, TutorialPreview} from "./service.models";
 import {SPACE_ID, ACCESS_TOKEN} from "./service.keys"
-const CONTENT_ID = 'tutorial';
+import {Post, DetailFields, ListItemFields} from "./service.models";
+const CONTENT_ID = 'post';
 
-export async function getTutorials(): Promise<TutorialPreview[]> {
-  let fields = ['title', 'slug', 'description', 'createdAt', 'tags'];
+export async function getPosts(): Promise<Post[]> {
   const contentType = `content_type=${CONTENT_ID}`;
-  const select = `select=sys.id,${fields.map(f => `fields.${f}`).join(',')}`;
-  let collection: CtfCollection<TutorialPreview> = await get(`entries?${contentType}&${select}`);
+  const select = `select=sys.id,${ListItemFields.map(f => `fields.${f}`).join(',')}`;
+  let collection: CtfCollection<Post> = await get(`entries?${contentType}&${select}`);
   return collection.items.map(item => ({...item.fields, id: item.sys.id}));
 }
 
-export async function getTutorial(id: string): Promise<Tutorial> {
-  let fields = ['title','slug','description','duration','createdAt','tags','content'];
-  const select = `select=sys.id,${fields.map(f => `fields.${f}`).join(',')}`;
-  let item: CftItem<Tutorial> = await get(`entries/${id}?${select}`);
+export async function getPost(id: string): Promise<Post> {
+  const select = `select=sys.id,${DetailFields.map(f => `fields.${f}`).join(',')}`;
+  let item: CftItem<Post> = await get(`entries/${id}?${select}`);
   return item.fields;
 }
 
