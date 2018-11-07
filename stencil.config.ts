@@ -6,5 +6,8 @@ export const config: Config = {
   globalStyle: 'src/global/app.css',
   plugins: [
     sass()
+  ],
+  copy: [
+    { src: 'web.config' }
   ]
 };

@@ -77,7 +77,7 @@ article {
   }
 }
 
-nav {
+.nav {
   position: relative;
   grid-column: 3;
 
@@ -137,7 +137,7 @@ nav {
 }
 
 @media screen and (min-width: 1000px) {
-  nav {
+  .nav {
     display: flex;
   }
 }

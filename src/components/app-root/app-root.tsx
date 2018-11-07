@@ -24,7 +24,7 @@ export class AppRoot {
         </stencil-router>
       </main>,
       <footer>
-        <div class="description">Check the code on GitHub <a href="https://github.com/matteobortolazzo/pomice">here</a>!
+        <div class="description">Check the code in my <a href="https://github.com/matteobortolazzo/pomice">GitHub repository</a>!
           Feel free to open an issue if something goes wrong or is missing.
         </div>
         <div>Matteo Bortolazzo - 2018</div>

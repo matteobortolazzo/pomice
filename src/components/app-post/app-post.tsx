@@ -91,7 +91,7 @@ export class AppTutorial {
           </header>
           <article innerHTML={convertedContent}></article>
         </section>
-        <nav>
+        <div class="nav">
           <div class="nav-inner">
             <div class="section-menu-title">Content</div>
             {this.sections.map(section =>
@@ -99,7 +99,7 @@ export class AppTutorial {
                 <a id={`menu-${section.id}`} onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>{section.text}</a>
               </div>)}
           </div>
-        </nav>
+        </div>
       </div>
     );
   }
