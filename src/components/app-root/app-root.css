@@ -1,22 +1,26 @@
+app-root {
+  --header-height: 55px;
+}
+
 pom-header {
   top: 0;
   width: 100%;
   position: fixed;
+  grid-row: 1;
+  height: var(--header-height);
 }
 
 main {
-  padding: 54.4px 0px 0px;
+  min-height: 100vh;
+  margin-top: var(--header-height);
 }
 
 footer {
-  display: flex;
-  margin-top: var(--pom-margin-top);
+  margin-top: 20px;
+  text-align: center;
+  box-shadow: var(--pom-box-shadow);
   color: var(--pom-text-color-2);
   font-size: var(--pom-font-size-smaller);
   background-color: var(--pom-text-color-contrast-2);
   padding: var(--pom-padding-top) var(--pom-padding-big-start) var(--pom-padding-bottom) var(--pom-padding-big-end);
-}
-
-footer .description {
-  flex: 1;
 }

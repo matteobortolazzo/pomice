@@ -27,7 +27,6 @@ export class AppRoot {
         <div class="description">Check the code in my <a href="https://github.com/matteobortolazzo/pomice">GitHub repository</a>!
           Feel free to open an issue if something goes wrong or is missing.
         </div>
-        <div>Matteo Bortolazzo - 2018</div>
       </footer>
     ]);
   }
