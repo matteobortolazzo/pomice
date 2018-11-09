@@ -1,5 +1,5 @@
 import { Component } from '@stencil/core';
-
+import { BLOG_GITHUB_REPO} from "../../settings";
 
 @Component({
   tag: 'app-root',
@@ -10,11 +10,6 @@ export class AppRoot {
 
   render() {
     return ([
-      <pom-header main-title="Matteo Bortolazzo" sub-title="from Ionic to .NET and Azure">
-        <pom-header-icon-item icon="logo-twitter" url="https://twitter.com"></pom-header-icon-item>
-        <pom-header-icon-item icon="logo-github" url="https://github.com"></pom-header-icon-item>
-        <pom-header-icon-item icon="logo-linkedin" url="https://linkedin.com"></pom-header-icon-item>
-      </pom-header>,
       <main>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
@@ -24,7 +19,7 @@ export class AppRoot {
         </stencil-router>
       </main>,
       <footer>
-        <div class="description">Check the code in my <a href="https://github.com/matteobortolazzo/pomice">GitHub repository</a>!
+        <div class="description">Check the code in my <a href={BLOG_GITHUB_REPO}>GitHub repository</a>!
           Feel free to open an issue if something goes wrong or is missing.
         </div>
       </footer>

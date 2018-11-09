@@ -1,11 +1,6 @@
 export function generateSocialButtons(title: string, pageUrl: string): SocialButtonItem[] {
   return [
     {
-      icon: 'logo-facebook',
-      description: 'Facebook',
-      url: `http://www.facebook.com/sharer.php?u=${pageUrl}`
-    },
-    {
       icon: 'logo-twitter',
       description: 'Twitter',
       url: `https://twitter.com/share?url=${escape(pageUrl)}&amp;text=${escape(title)}&amp`
@@ -13,7 +8,7 @@ export function generateSocialButtons(title: string, pageUrl: string): SocialBut
     {
       icon: 'logo-linkedin',
       description: 'LinkedIn',
-      url: `http://www.linkedin.com/shareArticle?mini=true&amp;url=${pageUrl}`
+      url: `https://www.linkedin.com/shareArticle?mini=true&amp;url=${escape(pageUrl)}&title=${escape(title)}`
     },
     {
       icon: 'mail',

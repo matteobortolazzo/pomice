@@ -25,4 +25,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 
-src/service/service.keys.ts
+src/settings.ts

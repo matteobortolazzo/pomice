@@ -1,4 +1,4 @@
-import {SPACE_ID, ACCESS_TOKEN} from "./service.keys"
+import {CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN} from "../settings"
 import {Post, DetailFields, ListItemFields} from "./service.models";
 const CONTENT_ID = 'post';
 
@@ -16,6 +16,6 @@ export async function getPost(id: string): Promise<Post> {
 }
 
 function get(path: string): Promise<any> {
-  return fetch(`https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/${path}&access_token=${ACCESS_TOKEN}`)
+  return fetch(`https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master/${path}&access_token=${CONTENTFUL_ACCESS_TOKEN}`)
     .then(response => response.json());
 }

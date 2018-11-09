@@ -11,9 +11,9 @@ export class Header {
 
   @State() menuOpened = false;
 
-  @Prop() mainTitle: string;
+  @Prop() blogTitle: string;
+  @Prop() blogSubtitle: string;
   @Prop() showPercentage = false;
-  @Prop() subTitle: string;
 
   @State() lastPercentage = 0;
 
@@ -25,7 +25,9 @@ export class Header {
 
   @Listen("window:scroll")
   scrolled() {
-    this.lastPercentage = getScrollPercent();
+    if (this.showPercentage) {
+      this.lastPercentage = getScrollPercent();
+    }
   }
 
   private toggle() {
@@ -37,8 +39,8 @@ export class Header {
       <nav>
         <div class={'nav-inner ' + (this.menuOpened ? 'show-menu' : '')}>
           <div class="main">
-            <a href="/" class="title"><span>{this.mainTitle}</span></a>
-            <a href="/" class="subtitle"><span>{this.subTitle}</span></a>
+            <a href="/" class="title"><span>{this.blogTitle}</span></a>
+            <a href="/" class="subtitle"><span>{this.blogSubtitle}</span></a>
           </div>
           <div class="menu">
             <div class="items">

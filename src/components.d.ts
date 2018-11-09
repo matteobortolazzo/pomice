@@ -8,6 +8,7 @@
 import '@stencil/core';
 
 import '@stencil/router';
+import '@stencil/state-tunnel';
 import {
   MatchResults,
 } from '@stencil/router';
@@ -47,14 +48,14 @@ export namespace Components {
   }
 
   interface PomHeader {
-    'mainTitle': string;
+    'blogSubtitle': string;
+    'blogTitle': string;
     'showPercentage': boolean;
-    'subTitle': string;
   }
   interface PomHeaderAttributes extends StencilHTMLAttributes {
-    'mainTitle'?: string;
+    'blogSubtitle'?: string;
+    'blogTitle'?: string;
     'showPercentage'?: boolean;
-    'subTitle'?: string;
   }
 
   interface PomImage {

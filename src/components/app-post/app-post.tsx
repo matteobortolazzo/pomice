@@ -1,10 +1,13 @@
-import {Component, Listen, Prop} from '@stencil/core';
+import {Component, Listen, Prop, State} from '@stencil/core';
 import {MatchResults} from "@stencil/router";
+import {setMeta} from "./app-post.meta";
 import {Post} from "../../service/service.models";
 import {getPost} from "../../service/service.functions";
+import {handleSectionHighlight, TutorialSection} from "./app-post.section";
+import {renderCode, renderHeading, renderImage} from "./app-post.rendering";
+import {BLOG_SUBTITLE, BLOG_TITLE, PROFILE_URL_GITHUB, PROFILE_URL_LINKEDIN, PROFILE_URL_TWITTER} from "../../settings";
 import Moment from "moment";
 import marked from 'marked';
-import {renderCode, renderHeading, renderImage} from "./app-post.rendering";
 
 @Component({
   tag: 'app-post',
@@ -13,11 +16,13 @@ import {renderCode, renderHeading, renderImage} from "./app-post.rendering";
 })
 export class AppTutorial {
   private post: Post;
-  private lastSection: TutorialSection;
-  private sections: TutorialSection[] = [];
+  private loaded = false;
   private renderer = new marked.Renderer();
 
+  @State() private sections: TutorialSection[] = [];
+
   @Prop() match: MatchResults;
+  @Prop({ context: 'isServer' }) private isServer: boolean;
 
   constructor() {
     this.renderer.code = renderCode;
@@ -27,37 +32,26 @@ export class AppTutorial {
 
   async componentWillLoad() {
     this.post = await getPost(this.match.params.id);
-    document.title = this.post.heading;
-    let meta = document.getElementsByTagName("meta");
-    for (let i = 0; i < meta.length; i++) {
-      if (meta[i].name.toLowerCase() == "description") {
-        meta[i].content = this.post.description;
-      }
-    }
+    setMeta(this.post);
   }
 
   @Listen("window:scroll")
   scrolled() {
-    let top = document.documentElement.scrollTop;
-    let lastSearchSection: any;
-    for(let section of this.sections) {
-      if (top > section.top - 56) {
-        lastSearchSection = section;
-      }
-    }
-    if (this.lastSection && this.lastSection.menuElement.classList.contains('on-screen'))
-      this.lastSection.menuElement.classList.remove('on-screen');
-    if (lastSearchSection && !lastSearchSection.menuElement.classList.contains('on-screen')) {
-      lastSearchSection.menuElement.classList.add('on-screen');
-      this.lastSection = lastSearchSection;
-    }
+    if (window.innerWidth < 1000) return;
+
+    if (!this.loaded || this.sections.length === 0) return;
+    this.sections = handleSectionHighlight(this.sections);
   }
 
   componentDidLoad() {
-    this.sections.map(s => {
-      s.top = document.querySelector(`#${s.id}`).getBoundingClientRect().top;
-      s.menuElement = document.querySelector(`#menu-${s.id}`);
-    });
+    if (this.isServer) return;
+
+    setTimeout(() => {
+      this.sections.map(section => {
+        section.top = document.querySelector(`#${section.id}`).getBoundingClientRect().top;
+      });
+      this.loaded = true;
+    }, 300);
   }
 
   private static scrollToId(e, id: string) {
@@ -71,7 +65,12 @@ export class AppTutorial {
 
   render() {
     const convertedContent = marked(this.post.content, {renderer: this.renderer});
-    return (
+    return ([
+      <pom-header blogTitle={BLOG_TITLE} blogSubtitle={BLOG_SUBTITLE} showPercentage={true}>
+        <pom-header-icon-item icon="logo-twitter" url={PROFILE_URL_TWITTER}></pom-header-icon-item>
+        <pom-header-icon-item icon="logo-github" url={PROFILE_URL_GITHUB}></pom-header-icon-item>
+        <pom-header-icon-item icon="logo-linkedin" url={PROFILE_URL_LINKEDIN}></pom-header-icon-item>
+      </pom-header>,
       <div class="app-post">
         <section>
           <header>
@@ -96,11 +95,11 @@ export class AppTutorial {
             <div class="section-menu-title">Content</div>
             {this.sections.map(section =>
               <div class="sections-menu-item">
-                <a id={`menu-${section.id}`} onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>{section.text}</a>
+                <a class={section.active === true ? 'on-screen': ''} id={`menu-${section.id}`} onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>{section.text}</a>
               </div>)}
           </div>
         </div>
       </div>
-    );
+    ]);
   }
 }
