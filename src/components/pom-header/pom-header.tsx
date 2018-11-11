@@ -13,12 +13,17 @@ export class Header {
 
   @Prop() blogTitle: string;
   @Prop() blogSubtitle: string;
+
   @Prop() showPercentage = false;
+  @Watch('showPercentage')
+  showPercentageChanged() {
+    this.lastPercentage = 0;
+  }
 
   @State() lastPercentage = 0;
 
   @Watch('lastPercentage')
-  watchHandler(newValue: number, oldValue: number) {
+  lastPercentageChanged(newValue: number, oldValue: number) {
     this.rootEl.style.setProperty("--scroll-percentage",(newValue - 100) + "%");
     this.rootEl.style.setProperty("--nav-translate-current",newValue > oldValue ? "var(--nav-translate-end)" : "var(--nav-translate-start)");
   }
@@ -39,8 +44,8 @@ export class Header {
       <nav>
         <div class={'nav-inner ' + (this.menuOpened ? 'show-menu' : '')}>
           <div class="main">
-            <a href="/" class="title"><span>{this.blogTitle}</span></a>
-            <a href="/" class="subtitle"><span>{this.blogSubtitle}</span></a>
+            <stencil-route-link url="/" class="title"><span>{this.blogTitle}</span></stencil-route-link>
+            <stencil-route-link url="/" class="subtitle"><span>{this.blogSubtitle}</span></stencil-route-link>
           </div>
           <div class="menu">
             <div class="items">

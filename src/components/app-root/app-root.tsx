@@ -1,5 +1,6 @@
-import { Component } from '@stencil/core';
+import {Component} from '@stencil/core';
 import {
+  BLOG_DESCRIPTION,
   BLOG_GITHUB_REPO,
   BLOG_SUBTITLE,
   BLOG_TITLE,
@@ -7,6 +8,7 @@ import {
   PROFILE_URL_LINKEDIN,
   PROFILE_URL_TWITTER
 } from "../../settings";
+import {setMeta} from "./app-root.meta";
 
 @Component({
   tag: 'app-root',
@@ -15,9 +17,13 @@ import {
 })
 export class AppRoot {
 
+  componentWillLoad() {
+    setMeta(BLOG_TITLE, BLOG_DESCRIPTION);
+  }
+
   render() {
     return ([
-      <pom-header blogTitle={BLOG_TITLE} blogSubtitle={BLOG_SUBTITLE} showPercentage={true}>
+      <pom-header blogTitle={BLOG_TITLE} blogSubtitle={BLOG_SUBTITLE}>
         <pom-header-icon-item icon="logo-twitter" url={PROFILE_URL_TWITTER}></pom-header-icon-item>
         <pom-header-icon-item icon="logo-github" url={PROFILE_URL_GITHUB}></pom-header-icon-item>
         <pom-header-icon-item icon="logo-linkedin" url={PROFILE_URL_LINKEDIN}></pom-header-icon-item>

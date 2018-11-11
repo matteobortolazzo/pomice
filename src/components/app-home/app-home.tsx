@@ -1,7 +1,8 @@
-import {Component} from '@stencil/core';
+import {Component, Prop} from '@stencil/core';
 import Moment from "moment";
 import {Post} from "../../service/service.models";
 import {getPosts} from "../../service/service.functions";
+import {RouterHistory} from "@stencil/router";
 
 @Component({
   tag: 'app-home',
@@ -10,9 +11,16 @@ import {getPosts} from "../../service/service.functions";
 })
 export class AppHome {
   private posts: Post[] = [];
+  private header: HTMLPomHeaderElement;
+  @Prop() history: RouterHistory;
 
   async componentWillLoad() {
     this.posts = await getPosts();
+  }
+
+  componentDidLoad() {
+    this.header = document.querySelector('pom-header');
+    this.history.listen(e => this.header.showPercentage = e.pathname !== '/');
   }
 
   render() {

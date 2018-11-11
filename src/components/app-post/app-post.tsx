@@ -1,6 +1,6 @@
 import {Component, Listen, Prop, State} from '@stencil/core';
 import {MatchResults} from "@stencil/router";
-import {setMeta} from "./app-post.meta";
+import {setMeta} from "../app-root/app-root.meta";
 import {Post} from "../../service/service.models";
 import {getPost} from "../../service/service.functions";
 import {handleSectionHighlight, TutorialSection} from "./app-post.section";
@@ -31,7 +31,7 @@ export class AppTutorial {
 
   async componentWillLoad() {
     this.post = await getPost(this.match.params.id);
-    setMeta(this.post);
+    setMeta(this.post.heading, this.post.description);
   }
 
   @Listen("window:scroll")

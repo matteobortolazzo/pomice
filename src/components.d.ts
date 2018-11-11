@@ -11,13 +11,18 @@ import '@stencil/router';
 import '@stencil/state-tunnel';
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 
 
 export namespace Components {
 
-  interface AppHome {}
-  interface AppHomeAttributes extends StencilHTMLAttributes {}
+  interface AppHome {
+    'history': RouterHistory;
+  }
+  interface AppHomeAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
+  }
 
   interface AppPost {
     'match': MatchResults;
