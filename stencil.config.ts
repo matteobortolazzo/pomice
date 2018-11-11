@@ -9,5 +9,17 @@ export const config: Config = {
   ],
   copy: [
     { src: 'web.config' }
+  ],
+  outputTargets: [
+    {
+      type: 'www',
+      serviceWorker: {
+        skipWaiting: true,
+        clientsClaim: true,
+        globPatterns: [
+          '**/*.{js,css,json,html,ico,png,svg}'
+        ]
+      }
+    }
   ]
 };

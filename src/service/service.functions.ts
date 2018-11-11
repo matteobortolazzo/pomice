@@ -6,7 +6,10 @@ export async function getPosts(): Promise<Post[]> {
   const contentType = `content_type=${CONTENT_ID}`;
   const select = `select=sys.id,${ListItemFields.map(f => `fields.${f}`).join(',')}`;
   let collection: CtfCollection<Post> = await get(`entries?${contentType}&${select}`);
-  return collection.items.map(item => ({...item.fields, id: item.sys.id}));
+  const posts = collection.items
+    .map(item => ({...item.fields, id: item.sys.id}));
+  posts.sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
+  return posts;
 }
 
 export async function getPost(id: string): Promise<Post> {

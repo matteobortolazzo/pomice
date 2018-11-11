@@ -30,8 +30,8 @@ body {
 
   --pom-color-primary: #2c3e50;
   --pom-color-primary-shade: #212f3d;
-  --pom-color-secondary: #218c74;
-  --pom-color-secondary-shade: #1c7a65;
+  --pom-color-secondary: #e67e22;
+  --pom-color-secondary-shade: #d35400;
 
   --pom-max-container-width: 600px;
   --pom-box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.2);
@@ -39,8 +39,8 @@ body {
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   color: var(--pom-text-color-2);
   background-color: var(--pom-background-color);
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";

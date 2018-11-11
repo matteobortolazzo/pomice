@@ -5,7 +5,6 @@ import {Post} from "../../service/service.models";
 import {getPost} from "../../service/service.functions";
 import {handleSectionHighlight, TutorialSection} from "./app-post.section";
 import {renderCode, renderHeading, renderImage} from "./app-post.rendering";
-import {BLOG_SUBTITLE, BLOG_TITLE, PROFILE_URL_GITHUB, PROFILE_URL_LINKEDIN, PROFILE_URL_TWITTER} from "../../settings";
 import Moment from "moment";
 import marked from 'marked';
 
@@ -66,11 +65,6 @@ export class AppTutorial {
   render() {
     const convertedContent = marked(this.post.content, {renderer: this.renderer});
     return ([
-      <pom-header blogTitle={BLOG_TITLE} blogSubtitle={BLOG_SUBTITLE} showPercentage={true}>
-        <pom-header-icon-item icon="logo-twitter" url={PROFILE_URL_TWITTER}></pom-header-icon-item>
-        <pom-header-icon-item icon="logo-github" url={PROFILE_URL_GITHUB}></pom-header-icon-item>
-        <pom-header-icon-item icon="logo-linkedin" url={PROFILE_URL_LINKEDIN}></pom-header-icon-item>
-      </pom-header>,
       <div class="app-post">
         <section>
           <header>

@@ -1,5 +1,12 @@
 import { Component } from '@stencil/core';
-import { BLOG_GITHUB_REPO} from "../../settings";
+import {
+  BLOG_GITHUB_REPO,
+  BLOG_SUBTITLE,
+  BLOG_TITLE,
+  PROFILE_URL_GITHUB,
+  PROFILE_URL_LINKEDIN,
+  PROFILE_URL_TWITTER
+} from "../../settings";
 
 @Component({
   tag: 'app-root',
@@ -10,6 +17,11 @@ export class AppRoot {
 
   render() {
     return ([
+      <pom-header blogTitle={BLOG_TITLE} blogSubtitle={BLOG_SUBTITLE} showPercentage={true}>
+        <pom-header-icon-item icon="logo-twitter" url={PROFILE_URL_TWITTER}></pom-header-icon-item>
+        <pom-header-icon-item icon="logo-github" url={PROFILE_URL_GITHUB}></pom-header-icon-item>
+        <pom-header-icon-item icon="logo-linkedin" url={PROFILE_URL_LINKEDIN}></pom-header-icon-item>
+      </pom-header>,
       <main>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
