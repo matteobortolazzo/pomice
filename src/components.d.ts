@@ -55,11 +55,13 @@ export namespace Components {
   interface PomHeader {
     'blogSubtitle': string;
     'blogTitle': string;
+    'showBack': boolean;
     'showPercentage': boolean;
   }
   interface PomHeaderAttributes extends StencilHTMLAttributes {
     'blogSubtitle'?: string;
     'blogTitle'?: string;
+    'showBack'?: boolean;
     'showPercentage'?: boolean;
   }
 

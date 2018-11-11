@@ -20,7 +20,10 @@ export class AppHome {
 
   componentDidLoad() {
     this.header = document.querySelector('pom-header');
-    this.history.listen(e => this.header.showPercentage = e.pathname !== '/');
+    this.history.listen(e => {
+      this.header.showPercentage = e.pathname !== '/';
+      this.header.showBack = e.pathname !== '/';
+    });
   }
 
   render() {

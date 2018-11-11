@@ -10,6 +10,7 @@ export class Header {
   @Element() rootEl: HTMLElement;
 
   @State() menuOpened = false;
+  @Prop() showBack = false;
 
   @Prop() blogTitle: string;
   @Prop() blogSubtitle: string;
@@ -43,9 +44,14 @@ export class Header {
     return (
       <nav>
         <div class={'nav-inner ' + (this.menuOpened ? 'show-menu' : '')}>
-          <div class="main">
-            <stencil-route-link url="/" class="title"><span>{this.blogTitle}</span></stencil-route-link>
-            <stencil-route-link url="/" class="subtitle"><span>{this.blogSubtitle}</span></stencil-route-link>
+          <div class={'nav-header ' + (this.showBack ? 'show-back' : '')}>
+            <div class="back" onClick={() => window.history.back()}>
+              <ion-icon name="arrow-back"></ion-icon>
+            </div>
+            <stencil-route-link url="/" class="main">
+              <div class="title">{this.blogTitle}</div>
+              <div class="subtitle">{this.blogSubtitle}</div>
+            </stencil-route-link>
           </div>
           <div class="menu">
             <div class="items">
