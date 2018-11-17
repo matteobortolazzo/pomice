@@ -14,7 +14,7 @@ export class ShareButtons {
   render() {
     return(
       <div class="share-buttons">
-        <div class="share-button"><ion-icon name="share-alt"></ion-icon> Share</div>
+        <div class="share-button"><ion-icon name="share"></ion-icon> Share</div>
         <div class="popup">
           <div class="popup-inner">
             {generateSocialButtons(this.heading, this.pageUrl).map(b =>

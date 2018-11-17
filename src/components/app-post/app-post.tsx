@@ -34,14 +34,6 @@ export class AppTutorial {
     setMeta(this.post.heading, this.post.description);
   }
 
-  @Listen("window:scroll")
-  scrolled() {
-    if (window.innerWidth < 1000) return;
-
-    if (!this.loaded || this.sections.length === 0) return;
-    this.sections = handleSectionHighlight(this.sections);
-  }
-
   componentDidLoad() {
     if (this.isServer) return;
 
@@ -51,6 +43,14 @@ export class AppTutorial {
       });
       this.loaded = true;
     }, 300);
+  }
+
+  @Listen("window:scroll")
+  scrolled() {
+    if (window.innerWidth < 1000) return;
+
+    if (!this.loaded || this.sections.length === 0) return;
+    this.sections = handleSectionHighlight(this.sections);
   }
 
   private static scrollToId(e, id: string) {
