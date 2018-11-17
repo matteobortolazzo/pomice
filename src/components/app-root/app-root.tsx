@@ -1,4 +1,4 @@
-import {Component} from '@stencil/core';
+import {Component, Listen} from '@stencil/core';
 import {
   BLOG_DESCRIPTION,
   BLOG_GITHUB_REPO,
@@ -9,6 +9,8 @@ import {
   PROFILE_URL_TWITTER
 } from "../../settings";
 import {setMeta} from "./app-root.meta";
+import {LocationSegments} from "@stencil/router";
+import 'ip-stencil-route-listener'
 
 @Component({
   tag: 'app-root',
@@ -16,9 +18,22 @@ import {setMeta} from "./app-root.meta";
   shadow: false
 })
 export class AppRoot {
+  private header: HTMLPomHeaderElement;
 
   componentWillLoad() {
     setMeta(BLOG_TITLE, BLOG_DESCRIPTION);
+  }
+
+  componentDidLoad() {
+    this.header = document.querySelector('pom-header');
+  }
+
+  @Listen('pageEnter')
+  onPageEnter(e: CustomEvent<LocationSegments>) {
+    if (this.header) {
+      this.header.showPercentage = e.detail.pathname !== '/';
+      this.header.showBack = e.detail.pathname !== '/';
+    }
   }
 
   render() {
@@ -31,8 +46,8 @@ export class AppRoot {
       <main>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
-            <stencil-route url='/' component='app-home' exact={true}/>
-            <stencil-route url='/posts/:id/:slug' component='app-post'/>
+            <stencil-route routeRender={props => <ip-stencil-route-listener props={props} />} url='/' component='app-home' exact={true}/>
+            <stencil-route routeRender={props => <ip-stencil-route-listener props={props} />} url='/posts/:id/:slug' component='app-post'/>
           </stencil-route-switch>
         </stencil-router>
       </main>,

@@ -10,23 +10,22 @@ export class Header {
   @Element() rootEl: HTMLElement;
 
   @State() menuOpened = false;
-  @Prop() showBack = false;
-
-  @Prop() blogTitle: string;
-  @Prop() blogSubtitle: string;
-
-  @Prop() showPercentage = false;
-  @Watch('showPercentage')
-  showPercentageChanged() {
-    this.lastPercentage = 0;
-  }
-
   @State() lastPercentage = 0;
 
   @Watch('lastPercentage')
   lastPercentageChanged(newValue: number, oldValue: number) {
     this.rootEl.style.setProperty("--scroll-percentage",(newValue - 100) + "%");
     this.rootEl.style.setProperty("--nav-translate-current",newValue > oldValue ? "var(--nav-translate-end)" : "var(--nav-translate-start)");
+  }
+
+  @Prop() showBack = false;
+  @Prop() blogTitle: string;
+  @Prop() blogSubtitle: string;
+  @Prop() showPercentage = false;
+
+  @Watch('showPercentage')
+  showPercentageChanged() {
+    this.lastPercentage = 0;
   }
 
   @Listen("window:scroll")
@@ -59,7 +58,7 @@ export class Header {
             </div>
             <div class="menu-toggle-container">
               <div class="toggle-button menu" onClick={() => this.toggle()}>
-                <ion-icon name="at"></ion-icon>
+                <ion-icon name="ios-at"></ion-icon>
               </div>
               <div class="toggle-button close" onClick={() => this.toggle()}>
                 <ion-icon name="close"></ion-icon>

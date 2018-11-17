@@ -9,20 +9,16 @@ import '@stencil/core';
 
 import '@stencil/router';
 import '@stencil/state-tunnel';
+import 'ip-stencil-route-listener';
 import {
   MatchResults,
-  RouterHistory,
 } from '@stencil/router';
 
 
 export namespace Components {
 
-  interface AppHome {
-    'history': RouterHistory;
-  }
-  interface AppHomeAttributes extends StencilHTMLAttributes {
-    'history'?: RouterHistory;
-  }
+  interface AppHome {}
+  interface AppHomeAttributes extends StencilHTMLAttributes {}
 
   interface AppPost {
     'match': MatchResults;
