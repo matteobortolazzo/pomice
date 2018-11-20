@@ -1,3 +1,5 @@
+@import "theming.scss";
+
 body {
   --pom-margin-top: 10px;
   --pom-margin-end: 10px;
@@ -21,18 +23,6 @@ body {
   --pom-font-size-big: 1.4em;
   --pom-font-size-huge: 1.6em;
 
-  --pom-text-color: #2c3e50;
-  --pom-text-color-2: #34495e;
-  --pom-text-color-contrast: #ffffff;
-  --pom-text-color-contrast-2: #dddddd;
-  --pom-background-color: #ffffff;
-  --pom-background-color-2: #eeeeee;
-
-  --pom-color-primary: #2c3e50;
-  --pom-color-primary-shade: #212f3d;
-  --pom-color-secondary: #22a6b3;
-  --pom-color-secondary-shade: #01a3a4;
-
   --pom-max-container-width: 600px;
   --pom-box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.2);
   --pom-transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -46,6 +36,18 @@ body {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
+body.dark {
+  --pom-text-color: #ecf0f1;
+  --pom-text-color-2: #c8d6e5;
+  --pom-background-color: #222f3e;
+  --pom-background-color-2: #2c3e50;
+
+  --pom-color-primary: #2c3e50;
+  --pom-color-primary-contrast: #ecf0f1;
+  --pom-color-secondary: #22a6b3;
+  --pom-color-secondary-contrast: #ecf0f1;
+}
+
 h1,
 h2 {
   color: var(--pom-text-color);
@@ -53,6 +55,7 @@ h2 {
 
 p {
   text-align: justify;
+  color: var(--pom-text-color-2);
 }
 
 a,

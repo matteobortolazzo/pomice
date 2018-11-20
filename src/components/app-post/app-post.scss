@@ -18,7 +18,7 @@ header {
     display: flex;
     font-size: 0.8em;
     position: relative;
-    color: var(--pom-text-color-2);
+    color: var(--pom-text-color);
     margin-top: var(--pom-margin-top);
     margin-bottom: var(--pom-margin-bottom);
 
@@ -34,6 +34,26 @@ header {
 
     .time-to-read {
       margin-left: 10px;
+    }
+
+    .toggle-mode-button {
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 0 5px 5px 5px;
+      color: var(--pom-text-color);
+      margin: 0 0 0 var(--pom-margin-start);
+      background: var(--pom-background-color);
+      transition: var(--pom-transition);
+
+      &:hover {
+        background: var(--pom-background-color-2);
+      }
+
+      &:active {
+        transform: scale(0.9);
+      }
     }
 
     pom-share-buttons {

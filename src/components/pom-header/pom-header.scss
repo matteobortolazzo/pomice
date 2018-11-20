@@ -13,14 +13,14 @@ a:link,
 a:visited,
 a:focus {
   text-decoration: none;
-  color: var(--pom-background-color);
+  color: var(--pom-color-primary-contrast);
 }
 
 nav {
   position: relative;
   transition: var(--pom-transition);
   box-shadow: var(--pom-box-shadow);
-  color: var(--pom-text-color-contrast);
+  color: var(--pom-color-primary-contrast);
   background-color: var(--pom-color-primary);
   transform: translateY(var(--nav-translate-current));
 
@@ -100,9 +100,9 @@ nav {
       }
 
       .subtitle {
+        opacity: 0.8;
         margin-top: -2px;
         font-size: var(--pom-font-size-small);
-        color: var(--pom-text-color-contrast-2);
       }
     }
   }

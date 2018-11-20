@@ -14,7 +14,7 @@ import 'ip-stencil-route-listener'
 
 @Component({
   tag: 'app-root',
-  styleUrl: 'app-root.css',
+  styleUrl: 'app-root.scss',
   shadow: false
 })
 export class AppRoot {

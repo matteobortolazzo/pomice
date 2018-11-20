@@ -18,6 +18,7 @@ export class AppTutorial {
   private loaded = false;
   private renderer = new marked.Renderer();
 
+  @State() private darkMode = false;
   @State() private sections: TutorialSection[] = [];
 
   @Prop() match: MatchResults;
@@ -62,6 +63,11 @@ export class AppTutorial {
     });
   }
 
+  private toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    document.querySelector('body').classList.toggle('dark');
+  }
+
   render() {
     const convertedContent = marked(this.post.content, {renderer: this.renderer});
     return ([
@@ -79,6 +85,13 @@ export class AppTutorial {
                 <ion-icon name="time"></ion-icon>
                 <span>{this.post.duration}min</span>
               </div>
+              <button onClick={() => this.toggleDarkMode()} class="toggle-mode-button">
+              {
+                this.darkMode ?
+                  (<span><ion-icon name="sunny"></ion-icon> Light</span>) :
+                  (<span><ion-icon name="moon"></ion-icon> Dark</span>)
+              }
+              </button>
               <pom-share-buttons heading={this.post.heading}></pom-share-buttons>
             </div>
           </header>
