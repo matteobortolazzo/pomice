@@ -9,16 +9,17 @@ It's based on the Stencil App Starter.
 Add a settings.ts in src:
 
 ```typescript
-export const BLOG_TITLE = "xxx";
-export const BLOG_SUBTITLE = "xxx";
-export const BLOG_GITHUB_REPO = "https://github.com/xxx/xxx";
+export const BLOG_TITLE = 'xx';
+export const BLOG_SUBTITLE = 'xxx';
+export const BLOG_DESCRIPTION = 'xxx';
+export const BLOG_FOOTER_TEXT = 'xxx';
 
-export const PROFILE_URL_TWITTER = "https://twitter.com/xxx";
-export const PROFILE_URL_GITHUB = "https://github.com/xxx";
-export const PROFILE_URL_LINKEDIN = "https://www.linkedin.com/in/xxx/";
+export const PROFILE_URL_TWITTER = 'https://twitter.com/xxx';
+export const PROFILE_URL_GITHUB = 'https://github.com/xxx';
+export const PROFILE_URL_LINKEDIN = 'https://www.linkedin.com/in/xxx/';
 
-export const CONTENTFUL_SPACE_ID = "xxx";
-export const CONTENTFUL_ACCESS_TOKEN = "xxx";
+export const CONTENTFUL_SPACE_ID = 'xxx';
+export const CONTENTFUL_ACCESS_TOKEN = 'xxx';
 ```
 
 On Contentful add a content model "post" compatible with the following TS class where "content" is a markdown field:

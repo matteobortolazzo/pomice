@@ -1,7 +1,7 @@
 import {Component, Listen} from '@stencil/core';
 import {
   BLOG_DESCRIPTION,
-  BLOG_GITHUB_REPO,
+  BLOG_FOOTER_TEXT,
   BLOG_SUBTITLE,
   BLOG_TITLE,
   PROFILE_URL_GITHUB,
@@ -52,9 +52,7 @@ export class AppRoot {
         </stencil-router>
       </main>,
       <footer>
-        <div class="description">Check the code in my <a href={BLOG_GITHUB_REPO}>GitHub repository</a>!
-          Feel free to open an issue if something goes wrong or is missing.
-        </div>
+        <div class="description" innerHTML={BLOG_FOOTER_TEXT}></div>
       </footer>
     ]);
   }

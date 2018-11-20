@@ -7,9 +7,6 @@ export const config: Config = {
   plugins: [
     sass()
   ],
-  copy: [
-    { src: 'web.config' }
-  ],
   outputTargets: [
     {
       type: 'www',
