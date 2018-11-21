@@ -2,7 +2,7 @@ import { Component } from '@stencil/core';
 import Moment from 'moment';
 
 import { Post } from '../../models/post.model';
-import { PostsService } from '../../service/posts.service';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   tag: 'app-home',

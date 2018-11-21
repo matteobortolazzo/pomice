@@ -1,7 +1,5 @@
 import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
 
-import { getScrollPercent } from './pom-header.functions';
-
 @Component({
   tag: 'pom-header',
   styleUrl: 'pom-header.scss',
@@ -15,8 +13,10 @@ export class Header {
 
   @Watch('lastPercentage')
   lastPercentageChanged(newValue: number, oldValue: number) {
-    this.rootEl.style.setProperty('--scroll-percentage', (newValue - 100) + '%');
-    this.rootEl.style.setProperty('--nav-translate-current', newValue > oldValue ? 'var(--nav-translate-end)' : 'var(--nav-translate-start)');
+    this.rootEl.style.setProperty('--scroll-percentage',
+      (newValue - 100) + '%');
+    this.rootEl.style.setProperty('--nav-translate-current',
+      newValue > oldValue ? 'var(--nav-translate-end)' : 'var(--nav-translate-start)');
   }
 
   @Prop() showBack = false;
@@ -31,9 +31,14 @@ export class Header {
 
   @Listen('window:scroll')
   scrolled() {
-    if (this.showPercentage) {
-      this.lastPercentage = getScrollPercent();
+    if (!this.showPercentage) {
+      return;
     }
+    const h = document.documentElement;
+    const b = document.body;
+    const st = 'scrollTop';
+    const sh = 'scrollHeight';
+    this.lastPercentage = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
   }
 
   private toggle() {

@@ -4,8 +4,8 @@ import marked from 'marked';
 import Moment from 'moment';
 
 import { Post } from '../../models/post.model';
-import { PostsService } from '../../service/posts.service';
-import { setMeta } from '../app-root/app-root.meta';
+import { PageService } from '../../services/page.service';
+import { PostsService } from '../../services/posts.service';
 
 import { renderCode, renderHeading, renderImage } from './app-post.rendering';
 import { TutorialSection, handleSectionHighlight } from './app-post.section';
@@ -34,7 +34,8 @@ export class AppTutorial {
 
   async componentWillLoad() {
     this.post = await PostsService.getPostAsync(this.match.params.id);
-    setMeta(this.post.heading, this.post.description);
+    PageService.setTitle(this.post.heading);
+    PageService.setDescription(this.post.description);
   }
 
   componentDidLoad() {

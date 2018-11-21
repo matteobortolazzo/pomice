@@ -2,6 +2,7 @@ import { Component, Listen } from '@stencil/core';
 import { LocationSegments } from '@stencil/router';
 import 'ip-stencil-route-listener';
 
+import { PageService } from '../../services/page.service';
 import {
   BLOG_DESCRIPTION,
   BLOG_FOOTER_TEXT,
@@ -12,8 +13,6 @@ import {
   PROFILE_URL_TWITTER
 } from '../../settings';
 
-import { setMeta } from './app-root.meta';
-
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.scss',
@@ -23,7 +22,8 @@ export class AppRoot {
   private header: HTMLPomHeaderElement;
 
   componentWillLoad() {
-    setMeta(BLOG_TITLE, BLOG_DESCRIPTION);
+    PageService.setTitle(BLOG_TITLE);
+    PageService.setTitle(BLOG_DESCRIPTION);
   }
 
   componentDidLoad() {
