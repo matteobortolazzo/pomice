@@ -1,9 +1,10 @@
 export function handleSectionHighlight(sections: TutorialSection[]): TutorialSection[] {
   const scrollTop = document.documentElement.scrollTop + 60;
-  let visitedSections = sections.filter(s => s.top && s.top < scrollTop + 60).reverse();
+  const visitedSections = sections.filter(s => s.top && s.top < scrollTop + 60).reverse();
   sections.forEach(s => s.active = false);
-  if (visitedSections.length > 0)
+  if (visitedSections.length > 0) {
     visitedSections[0].active = true;
+  }
   return [...sections];
 }
 

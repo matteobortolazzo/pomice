@@ -15,10 +15,10 @@ export function generateSocialButtons(title: string, pageUrl: string): SocialBut
       description: 'Email',
       url: `mailto:?Subject=${title}&amp;Body=${escape(title)} ${pageUrl}`
     }
-  ]
+  ];
 }
 
 export interface SocialButtonItem {
-  icon: string,
-  description: string,
-  url: string }
+  icon: string;
+  description: string;
+  url: string; }

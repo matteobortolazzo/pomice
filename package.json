@@ -1,13 +1,19 @@
 {
   "name": "@matteobortolazzo/pomice",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "Pomice - a blog PWA built with StencilJS.",
   "scripts": {
     "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "lint": "npm run lint.ts && npm run lint.sass",
+    "lint.fix": "npm run lint.ts.fix && npm run lint.sass.fix",
+    "lint.sass": "stylelint 'src/**/*.scss'",
+    "lint.sass.fix": "npm run lint.sass -- --fix",
+    "lint.ts": "tslint --project .",
+    "lint.ts.fix": "tslint --project . --fix"
   },
   "dependencies": {
     "@stencil/core": "^0.15.2",
@@ -16,7 +22,12 @@
     "highlight.js": "^9.13.1",
     "ip-stencil-route-listener": "0.0.1",
     "marked": "^0.5.1",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "stylelint": "~9.6.0",
+    "stylelint-order": "~1.0.0",
+    "tslint": "^5.10.0",
+    "tslint-ionic-rules": "0.0.19",
+    "tslint-react": "^3.6.0"
   },
   "repository": {
     "type": "git",

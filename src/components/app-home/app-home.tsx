@@ -1,7 +1,8 @@
-import {Component} from '@stencil/core';
-import Moment from "moment";
-import {Post} from "../../service/service.models";
-import {getPosts} from "../../service/service.functions";
+import { Component } from '@stencil/core';
+import Moment from 'moment';
+
+import { Post } from '../../models/post.model';
+import { PostsService } from '../../service/posts.service';
 
 @Component({
   tag: 'app-home',
@@ -12,7 +13,7 @@ export class AppHome {
   private posts: Post[] = [];
 
   async componentWillLoad() {
-    this.posts = await getPosts();
+    this.posts = await PostsService.getPostsAsync();
   }
 
   render() {

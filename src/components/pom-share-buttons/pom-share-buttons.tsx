@@ -1,5 +1,6 @@
-import {Component, Prop} from "@stencil/core";
-import {generateSocialButtons} from "./pom-share-buttons.functions";
+import { Component, Prop } from '@stencil/core';
+
+import { generateSocialButtons } from './pom-share-buttons.functions';
 
 @Component({
   tag: 'pom-share-buttons',

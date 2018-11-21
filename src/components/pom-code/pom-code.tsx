@@ -1,7 +1,8 @@
-import {Component, Prop} from "@stencil/core";
-import marked from 'marked';
+import { Component, Prop } from '@stencil/core';
 import hljs from 'highlight.js';
-import {getReadableLanguage} from "./pom-code.functions";
+import marked from 'marked';
+
+import { getReadableLanguage } from './pom-code.functions';
 
 @Component({
   tag: 'pom-code',
@@ -14,7 +15,7 @@ export class TutorialSectionCode {
 
   constructor() {
     marked.setOptions({
-      highlight: function (code, lang) {
+      highlight(code, lang) {
         return hljs.highlight(lang, code).value;
       }
     });
@@ -25,7 +26,7 @@ export class TutorialSectionCode {
   }
 
   render() {
-    let markCode = `\`\`\`${this.language}\n${this.code}\n\`\`\``;
+    const markCode = `\`\`\`${this.language}\n${this.code}\n\`\`\``;
     return (
       <div class="code-section">
         <div class="code-header">
@@ -39,6 +40,6 @@ export class TutorialSectionCode {
         </div>
         <div class="code" innerHTML={marked(markCode)}></div>
       </div>
-    )
+    );
   }
 }

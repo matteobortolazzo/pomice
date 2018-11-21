@@ -1,4 +1,7 @@
-import {Component, Listen} from '@stencil/core';
+import { Component, Listen } from '@stencil/core';
+import { LocationSegments } from '@stencil/router';
+import 'ip-stencil-route-listener';
+
 import {
   BLOG_DESCRIPTION,
   BLOG_FOOTER_TEXT,
@@ -7,10 +10,9 @@ import {
   PROFILE_URL_GITHUB,
   PROFILE_URL_LINKEDIN,
   PROFILE_URL_TWITTER
-} from "../../settings";
-import {setMeta} from "./app-root.meta";
-import {LocationSegments} from "@stencil/router";
-import 'ip-stencil-route-listener'
+} from '../../settings';
+
+import { setMeta } from './app-root.meta';
 
 @Component({
   tag: 'app-root',
@@ -46,8 +48,8 @@ export class AppRoot {
       <main>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
-            <stencil-route routeRender={props => <ip-stencil-route-listener props={props} />} url='/' component='app-home' exact={true}/>
-            <stencil-route routeRender={props => <ip-stencil-route-listener props={props} />} url='/posts/:id/:slug' component='app-post'/>
+            <stencil-route routeRender={props => <ip-stencil-route-listener props={props} />} url="/" component="app-home" exact/>
+            <stencil-route routeRender={props => <ip-stencil-route-listener props={props} />} url="/posts/:id/:slug" component="app-post"/>
           </stencil-route-switch>
         </stencil-router>
       </main>,

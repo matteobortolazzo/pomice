@@ -1,12 +1,14 @@
-import {Component, Listen, Prop, State} from '@stencil/core';
-import {MatchResults} from "@stencil/router";
-import {setMeta} from "../app-root/app-root.meta";
-import {Post} from "../../service/service.models";
-import {getPost} from "../../service/service.functions";
-import {handleSectionHighlight, TutorialSection} from "./app-post.section";
-import {renderCode, renderHeading, renderImage} from "./app-post.rendering";
-import Moment from "moment";
+import { Component, Listen, Prop, State } from '@stencil/core';
+import { MatchResults } from '@stencil/router';
 import marked from 'marked';
+import Moment from 'moment';
+
+import { Post } from '../../models/post.model';
+import { PostsService } from '../../service/posts.service';
+import { setMeta } from '../app-root/app-root.meta';
+
+import { renderCode, renderHeading, renderImage } from './app-post.rendering';
+import { TutorialSection, handleSectionHighlight } from './app-post.section';
 
 @Component({
   tag: 'app-post',
@@ -31,12 +33,12 @@ export class AppTutorial {
   }
 
   async componentWillLoad() {
-    this.post = await getPost(this.match.params.id);
+    this.post = await PostsService.getPostAsync(this.match.params.id);
     setMeta(this.post.heading, this.post.description);
   }
 
   componentDidLoad() {
-    if (this.isServer) return;
+    if (this.isServer) { return; }
 
     setTimeout(() => {
       this.sections.map(section => {
@@ -46,11 +48,11 @@ export class AppTutorial {
     }, 300);
   }
 
-  @Listen("window:scroll")
+  @Listen('window:scroll')
   scrolled() {
-    if (window.innerWidth < 1000) return;
+    if (window.innerWidth < 1000) { return; }
 
-    if (!this.loaded || this.sections.length === 0) return;
+    if (!this.loaded || this.sections.length === 0) { return; }
     this.sections = handleSectionHighlight(this.sections);
   }
 
@@ -69,7 +71,7 @@ export class AppTutorial {
   }
 
   render() {
-    const convertedContent = marked(this.post.content, {renderer: this.renderer});
+    const convertedContent = marked(this.post.content, { renderer: this.renderer });
     return ([
       <div class="app-post">
         <section>
@@ -102,7 +104,7 @@ export class AppTutorial {
             <div class="section-menu-title">Content</div>
             {this.sections.map(section =>
               <div class="sections-menu-item">
-                <a class={section.active === true ? 'on-screen': ''} id={`menu-${section.id}`} onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>{section.text}</a>
+                <a class={section.active === true ? 'on-screen' : ''} id={`menu-${section.id}`} onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>{section.text}</a>
               </div>)}
           </div>
         </div>
