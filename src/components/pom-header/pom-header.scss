@@ -71,15 +71,15 @@ nav {
     transition: var(--pom-transition);
 
     &.show-back {
-      .back {
+      .back-button {
         transform: scale(1);
       }
-      .main {
+      .nav-header-home {
         transform: translateX(0);
       }
     }
 
-    .back {
+    .back-button {
       width: 1em;
       font-size: 1.6em;
       transform: scale(0);
@@ -87,7 +87,7 @@ nav {
       padding-right: var(--pom-padding-big-end);
     }
 
-    .main {
+    .nav-header-home {
       transition: var(--pom-transition);
       transform: translateX(calc(calc(1em + var(--pom-padding-big-end)) * -1));
 

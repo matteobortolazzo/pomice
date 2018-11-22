@@ -2,13 +2,9 @@ import { Component, Listen, Prop, State } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 import marked from 'marked';
 import Moment from 'moment';
-
 import { Post } from '../../models/post.model';
 import { PageService } from '../../services/page.service';
 import { PostsService } from '../../services/posts.service';
-
-import { renderCode, renderHeading, renderImage } from './app-post.rendering';
-import { TutorialSection, handleSectionHighlight } from './app-post.section';
 
 @Component({
   tag: 'app-post',
@@ -24,25 +20,23 @@ export class AppTutorial {
   @State() private sections: TutorialSection[] = [];
 
   @Prop() match: MatchResults;
-  @Prop({ context: 'isServer' }) private isServer: boolean;
 
   constructor() {
-    this.renderer.code = renderCode;
-    this.renderer.image = renderImage;
-    this.renderer.heading = (text, level) => renderHeading(text, level, this.sections);
+    this.setupRenderer();
   }
 
   async componentWillLoad() {
+    if (this.post) {
+      return;
+    }
     this.post = await PostsService.getPostAsync(this.match.params.id);
     PageService.setTitle(this.post.heading);
     PageService.setDescription(this.post.description);
   }
 
   componentDidLoad() {
-    if (this.isServer) { return; }
-
     setTimeout(() => {
-      this.sections.map(section => {
+      this.sections.forEach(section => {
         section.top = document.querySelector(`#${section.id}`).getBoundingClientRect().top;
       });
       this.loaded = true;
@@ -51,10 +45,52 @@ export class AppTutorial {
 
   @Listen('window:scroll')
   scrolled() {
-    if (window.innerWidth < 1000) { return; }
+    // If the nav menu is not visible
+    if (window.innerWidth < 1000) {
+      return;
+    }
+    if (!this.loaded) {
+      return;
+    }
 
-    if (!this.loaded || this.sections.length === 0) { return; }
-    this.sections = handleSectionHighlight(this.sections);
+    const scrollTop = document.documentElement.scrollTop + 60;
+    const visitedSections = this.sections.filter(s => s.top && s.top < scrollTop + 56.4).reverse();
+    this.sections.forEach(s => s.active = false);
+    if (visitedSections.length > 0) {
+      visitedSections[0].active = true;
+    }
+    this.sections = [...this.sections];
+  }
+
+  private setupRenderer() {
+    this.renderer.code = (code: string, language: string) => {
+      return `<pom-code language="${language}" code="${code}"></pom-code>`;
+    };
+    this.renderer.image = (href: string, title: string, text: string) => {
+      return `<pom-image caption="${title}" src="${href}" alt="${text}"></pom-image>`;
+    };
+    this.renderer.heading = (text: string, level: number) => {
+      if (level < 2 || level > 4) {
+        return `<h${level}>${text}</h${level}>`;
+      }
+
+      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      if (!this.sections.find(s => s.id === escapedText)) {
+        this.sections.push({id: escapedText, text, active: false, level: level});
+      }
+      return `<h${level} class="section-header" id="${escapedText}">
+                <span>${text}</span>
+                <a name="${escapedText}" href="#${escapedText}"><ion-icon name="link"></ion-icon></a>
+              </h${level}>`;
+    }
+  }
+
+  private getSectionButtonClasses(section: TutorialSection): string {
+    let classes = 'sections-menu-item';
+    classes += ' level-' + section.level;
+    if (section.active)
+      classes += ' on-screen';
+    return classes;
   }
 
   private static scrollToId(e, id: string) {
@@ -72,14 +108,14 @@ export class AppTutorial {
   }
 
   render() {
-    const convertedContent = marked(this.post.content, { renderer: this.renderer });
+    const convertedContent = marked(this.post.content, {renderer: this.renderer});
     return ([
       <div class="app-post">
         <section>
           <header>
             <h1>{this.post.heading}</h1>
             <pom-tags-list tags={this.post.tags.split(';')}></pom-tags-list>
-            <div class="more-info">
+            <div class="post-info">
               <div class="publish-date">
                 <ion-icon name="calendar"></ion-icon>
                 <span>{Moment(this.post.date).format('ll')}</span>
@@ -89,11 +125,11 @@ export class AppTutorial {
                 <span>{this.post.duration}min</span>
               </div>
               <button onClick={() => this.toggleDarkMode()} class="toggle-mode-button">
-              {
-                this.darkMode ?
-                  (<span><ion-icon name="sunny"></ion-icon> Light</span>) :
-                  (<span><ion-icon name="moon"></ion-icon> Dark</span>)
-              }
+                {
+                  this.darkMode ?
+                    (<span><ion-icon name="sunny"></ion-icon> Light</span>) :
+                    (<span><ion-icon name="moon"></ion-icon> Dark</span>)
+                }
               </button>
               <pom-share-buttons heading={this.post.heading}></pom-share-buttons>
             </div>
@@ -104,12 +140,21 @@ export class AppTutorial {
           <div class="nav-inner">
             <div class="section-menu-title">Content</div>
             {this.sections.map(section =>
-              <div class="sections-menu-item">
-                <a class={section.active === true ? 'on-screen' : ''} id={`menu-${section.id}`} onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>{section.text}</a>
-              </div>)}
+              <a class={this.getSectionButtonClasses(section)} id={`menu-${section.id}`}
+                 onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>
+                {section.text}</a>
+            )}
           </div>
         </div>
       </div>
     ]);
   }
+}
+
+interface TutorialSection {
+  id: string;
+  text: string;
+  top?: number;
+  active: boolean;
+  level: number;
 }

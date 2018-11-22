@@ -13,6 +13,9 @@ export class AppHome {
   private posts: Post[] = [];
 
   async componentWillLoad() {
+    if (this.posts) {
+      return;
+    }
     this.posts = await PostsService.getPostsAsync();
   }
 

@@ -50,10 +50,10 @@ export class Header {
       <nav>
         <div class={'nav-inner ' + (this.menuOpened ? 'show-menu' : '')}>
           <div class={'nav-header ' + (this.showBack ? 'show-back' : '')}>
-            <div class="back" onClick={() => window.history.back()}>
+            <div class="back-button" onClick={() => window.history.back()}>
               <ion-icon name="arrow-back"></ion-icon>
             </div>
-            <stencil-route-link url="/" class="main">
+            <stencil-route-link url="/" class="nav-header-home">
               <div class="title">{this.blogTitle}</div>
               <div class="subtitle">{this.blogSubtitle}</div>
             </stencil-route-link>

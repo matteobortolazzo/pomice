@@ -14,7 +14,7 @@ header {
     font-size: 1.7em;
   }
 
-  .more-info {
+  .post-info {
     display: flex;
     font-size: 0.8em;
     position: relative;
@@ -106,10 +106,10 @@ article {
 
   .nav-inner {
     top: 76px;
-    position: fixed;
     display: flex;
+    position: fixed;
+    align-items: flex-end;
     flex-direction: column;
-    align-items: flex-start;
   }
 
   .section-menu-title {
@@ -121,18 +121,33 @@ article {
 
   .sections-menu-item {
     padding: 5px 0;
-  }
 
-  a,
-  a:link,
-  a:active,
-  a:visited {
-    display: block;
-    position: relative;
-    transition: var(--pom-transition);
-    transform-origin: 50% 100%;
-    color: var(--pom-text-color);
-    font-weight: bold;
+    &.level-2 {
+      font-size: 1em;
+      opacity: 1;
+    }
+
+    &.level-3 {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+
+    &.level-4 {
+      font-size: 0.8em;
+      opacity: 0.8;
+    }
+
+    &,
+    &:link,
+    &:active,
+    &:visited {
+      display: block;
+      position: relative;
+      transition: var(--pom-transition);
+      transform-origin: 50% 100%;
+      color: var(--pom-text-color);
+      font-weight: bold;
+    }
 
     &::after {
       content: '';

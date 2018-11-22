@@ -11,7 +11,7 @@ export class HeaderIconItem {
 
   render() {
     return(
-      <div class="menu-button">
+      <div class="icon-button">
         <a href={this.url}><ion-icon name={this.icon}></ion-icon></a>
       </div>
     );
