@@ -10,7 +10,7 @@ import { PostsService } from '../../services/posts.service';
   shadow: false
 })
 export class AppHome {
-  private posts: Post[] = [];
+  private posts: Post[];
 
   async componentWillLoad() {
     if (this.posts) {
