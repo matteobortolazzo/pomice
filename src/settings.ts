@@ -8,4 +8,4 @@ export const PROFILE_URL_GITHUB = 'https://github.com/matteobortolazzo';
 export const PROFILE_URL_LINKEDIN = 'https://www.linkedin.com/matteobortolazzo';
 
 export const CONTENTFUL_SPACE_ID = null;
-export const CONTENTFUL_ACCESS_TOKEN = null';
+export const CONTENTFUL_ACCESS_TOKEN = null;
