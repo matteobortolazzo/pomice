@@ -5,6 +5,7 @@ import Moment from 'moment';
 import { Post } from '../../models/post.model';
 import { PageService } from '../../services/page.service';
 import { PostsService } from '../../services/posts.service';
+import {ThemeService} from "../../services/theme.service";
 
 @Component({
   tag: 'app-post',
@@ -26,6 +27,7 @@ export class AppTutorial {
   }
 
   async componentWillLoad() {
+    this.darkMode = ThemeService.isDark;
     if (this.post) {
       return;
     }
@@ -103,8 +105,8 @@ export class AppTutorial {
   }
 
   private toggleDarkMode() {
-    this.darkMode = !this.darkMode;
-    document.querySelector('body').classList.toggle('dark');
+    this.darkMode = !this.darkMode
+    ThemeService.setTheme(this.darkMode);
   }
 
   render() {

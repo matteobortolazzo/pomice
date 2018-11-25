@@ -12,6 +12,7 @@ import {
   PROFILE_URL_LINKEDIN,
   PROFILE_URL_TWITTER
 } from '../../settings';
+import {ThemeService} from "../../services/theme.service";
 
 @Component({
   tag: 'app-root',
@@ -22,6 +23,7 @@ export class AppRoot {
   private header: HTMLPomHeaderElement;
 
   componentWillLoad() {
+    ThemeService.loadTheme();
     PageService.setTitle(BLOG_TITLE);
     PageService.setTitle(BLOG_DESCRIPTION);
   }
