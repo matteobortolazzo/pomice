@@ -4,8 +4,8 @@
   padding: 10px;
   border-radius: 5px;
   box-shadow: var(--pom-box-shadow);
-  color: var(--pom-background-color-2);
-  background-color: var(--pom-text-color);
+  color: var(--pom-code-text-color);
+  background-color: var(--pom-code-background-color);
 
   .code-header {
     font-size: var(--pom-font-size-smaller);
@@ -21,7 +21,25 @@
   }
 
   .code {
+    overflow-x: auto;
     padding-top: var(--pom-padding-top);
+
+    &::-webkit-scrollbar-track
+    {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: var(--pom-code-text-color);
+    }
+
+    &::-webkit-scrollbar
+    {
+      width: 4px;
+      background-color: var(--pom-code-text-color);
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+      background-color: var(--pom-color-secondary);
+    }
   }
 
   pre:first-child {
