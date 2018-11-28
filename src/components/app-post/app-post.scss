@@ -1,12 +1,9 @@
 .app-post {
   max-width: 600px;
   margin: 0 auto;
-  // grid-template-columns: 1fr auto 1fr;
 }
 
 section {
-  // grid-column: 2;
-  // max-width: 600px;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -39,22 +36,26 @@ header {
     }
 
     .toggle-mode-button {
-      border: 0;
-      outline: 0;
-      cursor: pointer;
-      border-radius: 5px;
-      padding: 0 5px 5px 5px;
-      color: var(--pom-text-color);
-      margin: 0 0 0 var(--pom-margin-start);
-      background: var(--pom-background-color);
-      transition: var(--pom-transition);
+      transform: translateY(-1px);
 
-      &:hover {
-        background: var(--pom-background-color-2);
-      }
+      button {
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 0 5px 5px 5px;
+        color: var(--pom-text-color);
+        margin: 0 0 0 var(--pom-margin-start);
+        background: var(--pom-background-color);
+        transition: var(--pom-transition);
 
-      &:active {
-        transform: scale(0.9);
+        &:hover {
+          background: var(--pom-background-color-2);
+        }
+
+        &:active {
+          transform: scale(0.9);
+        }
       }
     }
 
@@ -100,22 +101,21 @@ article {
 }
 
 .nav {
-  position: relative;
-  grid-column: 3;
+  top: 104px;
+  right: 40px;
+  position: fixed;
 
   display: none;
   justify-content: center;
 
   .nav-inner {
-    top: 76px;
     display: flex;
-    position: fixed;
-    align-items: flex-end;
+    align-items: flex-start;
     flex-direction: column;
   }
 
   .section-menu-title {
-    font-size: 0.8em;
+    font-size: 0.7em;
     padding-bottom: 5px;
     text-transform: uppercase;
     color: var(--pom-text-color-2)
@@ -123,19 +123,20 @@ article {
 
   .sections-menu-item {
     padding: 5px 0;
+    font-size: 0.8em;
 
     &.level-2 {
-      font-size: 1em;
       opacity: 1;
+      font-weight: 500;
     }
 
     &.level-3 {
-      font-size: 0.9em;
+      margin-left: 10px;
       opacity: 0.9;
     }
 
     &.level-4 {
-      font-size: 0.8em;
+      margin-left: 20px;
       opacity: 0.8;
     }
 
@@ -148,7 +149,6 @@ article {
       transition: var(--pom-transition);
       transform-origin: 50% 100%;
       color: var(--pom-text-color);
-      font-weight: bold;
     }
 
     &::after {
@@ -156,14 +156,13 @@ article {
       position: absolute;
       top: 0;
       bottom: 0;
-      left: -20px;
+      left: -10px;
       width: 2px;
       opacity: 0;
       background-color: var(--pom-color-secondary);
     }
 
     &.on-screen {
-      transform: scale(1.05);
       color: var(--pom-color-secondary);
 
       &::after {

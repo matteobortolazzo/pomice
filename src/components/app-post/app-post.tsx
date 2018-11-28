@@ -126,13 +126,15 @@ export class AppTutorial {
                 <ion-icon name="time"></ion-icon>
                 <span>{this.post.duration}min</span>
               </div>
-              <button onClick={() => this.toggleDarkMode()} class="toggle-mode-button">
-                {
-                  this.darkMode ?
-                    (<span><ion-icon name="sunny"></ion-icon> Light</span>) :
-                    (<span><ion-icon name="moon"></ion-icon> Dark</span>)
-                }
-              </button>
+              <div class="toggle-mode-button">
+                <button onClick={() => this.toggleDarkMode()}>
+                  {
+                    this.darkMode ?
+                      (<span><ion-icon name="sunny"></ion-icon> Light</span>) :
+                      (<span><ion-icon name="moon"></ion-icon> Dark</span>)
+                  }
+                </button>
+              </div>
               <pom-share-buttons heading={this.post.heading}></pom-share-buttons>
             </div>
           </header>
@@ -140,7 +142,7 @@ export class AppTutorial {
         </section>
         <div class="nav">
           <div class="nav-inner">
-            <div class="section-menu-title">Content</div>
+            <div class="section-menu-title">Contents</div>
             {this.sections.map(section =>
               <a class={this.getSectionButtonClasses(section)} id={`menu-${section.id}`}
                  onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>
