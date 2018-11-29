@@ -3,6 +3,12 @@
   margin: 0 auto;
 }
 
+blockquote {
+  padding-left: 10px;
+  margin-left: 20px;
+  border-left: 2px solid var(--pom-color-secondary)
+}
+
 section {
   padding: 20px;
   box-sizing: border-box;
