@@ -108,7 +108,7 @@ article {
 
 .nav {
   top: 104px;
-  right: 40px;
+  left: calc(50vw + 380px);
   position: fixed;
 
   display: none;
