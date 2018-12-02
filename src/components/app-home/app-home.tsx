@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core';
+import {Component, Prop} from '@stencil/core';
 import Moment from 'moment';
 
 import { Post } from '../../models/post.model';
@@ -12,11 +12,12 @@ import { PostsService } from '../../services/posts.service';
 export class AppHome {
   private posts: Post[];
 
+  @Prop({ context: 'isServer' }) private isServer: boolean;
+
   async componentWillLoad() {
-    if (this.posts) {
-      return;
+    if (process.env.NODE_ENV === 'development' || this.isServer) {
+      this.posts = await PostsService.getPostsAsync();
     }
-    this.posts = await PostsService.getPostsAsync();
   }
 
   render() {

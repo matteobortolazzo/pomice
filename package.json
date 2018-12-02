@@ -16,12 +16,12 @@
     "lint.ts.fix": "tslint --project . --fix"
   },
   "dependencies": {
-    "@stencil/core": "^0.15.2",
+    "@stencil/core": "^0.16.0",
     "@stencil/router": "^0.3.1",
     "@stencil/sass": "^0.1.1",
     "highlight.js": "^9.13.1",
     "ip-stencil-route-listener": "0.0.1",
-    "marked": "^0.5.1",
+    "marked": "^0.5.2",
     "moment": "^2.22.2",
     "stylelint": "~9.6.0",
     "stylelint-order": "~1.0.0",

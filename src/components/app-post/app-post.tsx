@@ -21,6 +21,7 @@ export class AppTutorial {
   @State() private sections: TutorialSection[] = [];
 
   @Prop() match: MatchResults;
+  @Prop({ context: 'isServer' }) private isServer: boolean;
 
   constructor() {
     this.setupRenderer();
@@ -28,10 +29,9 @@ export class AppTutorial {
 
   async componentWillLoad() {
     this.darkMode = ThemeService.isDark;
-    if (this.post) {
-      return;
+    if (process.env.NODE_ENV === 'development' || this.isServer) {
+      this.post = await PostsService.getPostAsync(this.match.params.id);
     }
-    this.post = await PostsService.getPostAsync(this.match.params.id);
     PageService.setTitle(this.post.heading);
     PageService.setDescription(this.post.description);
   }
@@ -66,6 +66,7 @@ export class AppTutorial {
 
   private setupRenderer() {
     this.renderer.code = (code: string, language: string) => {
+      console.log(code, language);
       return `<pom-code language="${language}" code="${code}"></pom-code>`;
     };
     this.renderer.image = (href: string, title: string, text: string) => {
