@@ -66,7 +66,6 @@ export class AppTutorial {
 
   private setupRenderer() {
     this.renderer.code = (code: string, language: string) => {
-      console.log(code, language);
       return `<pom-code language="${language}" code="${code}"></pom-code>`;
     };
     this.renderer.image = (href: string, title: string, text: string) => {
