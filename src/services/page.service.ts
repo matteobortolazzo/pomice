@@ -25,5 +25,9 @@ export const PageService = {
     ogDescription.content = post.description;
     const ogUrl = metas.find(meta => meta.name.toLowerCase() === 'og:url');
     ogUrl.content = window.location.href.toString().split('#')[0];
+    if (post.thumbnailUrl) {
+      const ogImage = metas.find(meta => meta.name.toLowerCase() === 'og:image');
+      ogImage.content = post.thumbnailUrl;
+    }
   }
 };

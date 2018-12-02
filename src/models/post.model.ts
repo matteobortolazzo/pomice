@@ -7,4 +7,5 @@ export interface Post {
   duration: number;
   tags: string;
   content: string;
+  thumbnailUrl: string;
 }
