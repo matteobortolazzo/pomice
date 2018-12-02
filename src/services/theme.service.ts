@@ -4,8 +4,6 @@ export const ThemeService = {
     if (typeof (Storage) != 'undefined') {
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       setThemeClass(isDark);
-    } else {
-      console.error('Sorry! No Web Storage support..');
     }
   },
   loadTheme(): void {
@@ -14,9 +12,6 @@ export const ThemeService = {
       const isDark = theme && theme === 'dark';
       this.isDark = isDark;
       setThemeClass(isDark);
-    }
-    else {
-      console.error('Sorry! No Web Storage support..');
     }
   }
 };
