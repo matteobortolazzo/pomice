@@ -1,3 +1,5 @@
+import {Post} from "../models/post.model";
+
 export const PageService = {
   /**
    * Change the title of the page.
@@ -14,5 +16,14 @@ export const PageService = {
     const metas = Array.from(document.getElementsByTagName('meta'));
     const descriptionMeta = metas.find(meta => meta.name.toLowerCase() === 'description');
     descriptionMeta.content = description;
+  },
+  setOpenGraphMetas(post: Post) {
+    const metas = Array.from(document.getElementsByTagName('meta'));
+    const ogTitle = metas.find(meta => meta.name.toLowerCase() === 'og:title');
+    ogTitle.content = post.heading;
+    const ogDescription = metas.find(meta => meta.name.toLowerCase() === 'og:description');
+    ogDescription.content = post.description;
+    const ogUrl = metas.find(meta => meta.name.toLowerCase() === 'og:url');
+    ogUrl.content = window.location.href.toString().split('#')[0];
   }
 };

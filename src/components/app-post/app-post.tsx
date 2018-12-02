@@ -31,9 +31,10 @@ export class AppTutorial {
     this.darkMode = ThemeService.isDark;
     if (process.env.NODE_ENV === 'development' || this.isServer) {
       this.post = await PostsService.getPostAsync(this.match.params.id);
+      PageService.setTitle(this.post.heading);
+      PageService.setDescription(this.post.description);
+      PageService.setOpenGraphMetas(this.post);
     }
-    PageService.setTitle(this.post.heading);
-    PageService.setDescription(this.post.description);
   }
 
   componentDidLoad() {
