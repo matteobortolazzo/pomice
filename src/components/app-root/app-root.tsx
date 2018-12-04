@@ -3,6 +3,7 @@ import { LocationSegments } from '@stencil/router';
 import 'ip-stencil-route-listener';
 
 import { PageService } from '../../services/page.service';
+import { ThemeService } from '../../services/theme.service';
 import {
   BLOG_DESCRIPTION,
   BLOG_FOOTER_TEXT,
@@ -12,7 +13,6 @@ import {
   PROFILE_URL_LINKEDIN,
   PROFILE_URL_TWITTER
 } from '../../settings';
-import {ThemeService} from "../../services/theme.service";
 
 @Component({
   tag: 'app-root',

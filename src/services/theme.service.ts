@@ -1,13 +1,13 @@
 export const ThemeService = {
   isDark: false,
   setTheme(isDark: boolean): void {
-    if (typeof (Storage) != 'undefined') {
+    if (typeof (Storage) !== 'undefined') {
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       setThemeClass(isDark);
     }
   },
   loadTheme(): void {
-    if (typeof (Storage) != 'undefined') {
+    if (typeof (Storage) !== 'undefined') {
       const theme = localStorage.getItem('theme');
       const isDark = theme && theme === 'dark';
       this.isDark = isDark;

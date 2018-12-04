@@ -2,10 +2,11 @@ import { Component, Listen, Prop, State } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 import marked from 'marked';
 import Moment from 'moment';
+
 import { Post } from '../../models/post.model';
 import { PageService } from '../../services/page.service';
 import { PostsService } from '../../services/posts.service';
-import {ThemeService} from "../../services/theme.service";
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   tag: 'app-post',
@@ -76,20 +77,21 @@ export class AppTutorial {
 
       const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
       if (!this.sections.find(s => s.id === escapedText)) {
-        this.sections.push({id: escapedText, text, active: false, level: level});
+        this.sections.push({ id: escapedText, text, active: false, level });
       }
       return `<h${level} class="section-header" id="${escapedText}">
                 <span>${text}</span>
                 <a name="${escapedText}" href="#${escapedText}"><ion-icon name="link"></ion-icon></a>
               </h${level}>`;
-    }
+    };
   }
 
   private getSectionButtonClasses(section: TutorialSection): string {
     let classes = 'sections-menu-item';
     classes += ' level-' + section.level;
-    if (section.active)
+    if (section.active) {
       classes += ' on-screen';
+    }
     return classes;
   }
 
@@ -103,13 +105,13 @@ export class AppTutorial {
   }
 
   private toggleDarkMode() {
-    this.darkMode = !this.darkMode
+    this.darkMode = !this.darkMode;
     ThemeService.setTheme(this.darkMode);
   }
 
   render() {
-    const convertedContent = marked(this.post.content, {renderer: this.renderer});
-    return ([
+    const convertedContent = marked(this.post.content, { renderer: this.renderer });
+    return (
       <div class="app-post">
         <section>
           <header>
@@ -141,15 +143,21 @@ export class AppTutorial {
         <div class="nav">
           <div class="nav-inner">
             <div class="section-menu-title">Contents</div>
-            {this.sections.map(section =>
-              <a class={this.getSectionButtonClasses(section)} id={`menu-${section.id}`}
-                 onClick={e => AppTutorial.scrollToId(e, section.id)} href={`#${section.id}`}>
-                {section.text}</a>
+            {
+              this.sections.map(section =>
+                <a
+                  class={this.getSectionButtonClasses(section)}
+                  id={`menu-${section.id}`}
+                  onClick={e => AppTutorial.scrollToId(e, section.id)}
+                  href={`#${section.id}`}
+                >
+                  {section.text}
+                </a>
             )}
           </div>
         </div>
       </div>
-    ]);
+    );
   }
 }
 

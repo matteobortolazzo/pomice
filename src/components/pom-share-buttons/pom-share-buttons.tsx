@@ -8,7 +8,7 @@ import { generateSocialButtons } from './pom-share-buttons.functions';
   shadow: true
 })
 export class ShareButtons {
-  private pageUrl = window.location.href // window.location.href.toString().split('#')[0];
+  private pageUrl = window.location.href; // window.location.href.toString().split('#')[0];
 
   @Prop() heading: string;
 

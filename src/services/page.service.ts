@@ -1,5 +1,5 @@
-import {Post} from "../models/post.model";
-import {BLOG_URL} from "../settings";
+import { Post } from '../models/post.model';
+import { BLOG_URL } from '../settings';
 
 export const PageService = {
   /**
@@ -26,7 +26,7 @@ export const PageService = {
     ogDescription.content = post.description;
     const ogUrl = metas.find(meta => meta.name.toLowerCase() === 'og:url');
     ogUrl.content = BLOG_URL + window.location.pathname;
-    if (post.thumbnailUrl) {
+    if (post.thumbnailUrl !== undefined) {
       const ogImage = metas.find(meta => meta.name.toLowerCase() === 'og:image');
       ogImage.content = post.thumbnailUrl;
     }
