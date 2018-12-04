@@ -1,4 +1,5 @@
 import {Post} from "../models/post.model";
+import {BLOG_URL} from "../settings";
 
 export const PageService = {
   /**
@@ -24,10 +25,12 @@ export const PageService = {
     const ogDescription = metas.find(meta => meta.name.toLowerCase() === 'og:description');
     ogDescription.content = post.description;
     const ogUrl = metas.find(meta => meta.name.toLowerCase() === 'og:url');
-    ogUrl.content = window.location.href.toString().split('#')[0];
+    ogUrl.content = BLOG_URL + window.location.pathname;
     if (post.thumbnailUrl) {
       const ogImage = metas.find(meta => meta.name.toLowerCase() === 'og:image');
       ogImage.content = post.thumbnailUrl;
     }
   }
 };
+
+// BLOG_URL

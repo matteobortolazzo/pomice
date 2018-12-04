@@ -1,3 +1,4 @@
+export const BLOG_URL = 'https://github.com/matteobortolazzo/pomice';
 export const BLOG_TITLE = 'Pomice';
 export const BLOG_SUBTITLE = 'the ludicrous fast PWA blog';
 export const BLOG_DESCRIPTION = 'Pomice is a blog PWA written with StencilJS and Contentful CMS.';
