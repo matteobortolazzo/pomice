@@ -21,7 +21,6 @@ export class AppTutorial {
   @State() private sections: TutorialSection[] = [];
 
   @Prop() match: MatchResults;
-  @Prop({ context: 'isServer' }) private isServer: boolean;
 
   constructor() {
     this.setupRenderer();
@@ -29,12 +28,10 @@ export class AppTutorial {
 
   async componentWillLoad() {
     this.darkMode = ThemeService.isDark;
-    if (process.env.NODE_ENV === 'development' || this.isServer) {
-      this.post = await PostsService.getPostAsync(this.match.params.id);
-      PageService.setTitle(this.post.heading);
-      PageService.setDescription(this.post.description);
-      PageService.setOpenGraphMetas(this.post);
-    }
+    this.post = await PostsService.getPostAsync(this.match.params.id);
+    PageService.setTitle(this.post.heading);
+    PageService.setDescription(this.post.description);
+    PageService.setOpenGraphMetas(this.post);
   }
 
   componentDidLoad() {
