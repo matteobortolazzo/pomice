@@ -1,19 +1,26 @@
-export function generateSocialButtons(title: string, pageUrl: string): SocialButtonItem[] {
+import {Post} from "../../models/post.model";
+import {BLOG_TITLE} from "../../settings";
+
+export function generateSocialButtons(post: Post): SocialButtonItem[] {
   return [
     {
       icon: 'logo-twitter',
       description: 'Twitter',
-      url: `https://twitter.com/share?url=${escape(pageUrl)}&amp;text=${escape(title)}&amp`
+      url: `http://www.twitter.com/intent/tweet?text=${escape(post.heading)}&url=${escape(window.location.href)}`
     },
     {
       icon: 'logo-linkedin',
       description: 'LinkedIn',
-      url: `https://www.linkedin.com/shareArticle?mini=true&amp;url=${escape(pageUrl)}&title=${escape(title)}`
+      url: 'https://www.linkedin.com/shareArticle?mini=true&' +
+        `title=${escape(post.heading)}` +
+        `url=${escape(window.location.href)}&` +
+        `summary=${escape(post.description)}&` +
+        `source=${escape(BLOG_TITLE)}&`
     },
     {
       icon: 'mail',
       description: 'Email',
-      url: `mailto:?Subject=${title}&amp;Body=${escape(title)} ${pageUrl}`
+      url: `mailto:?Subject=${post.heading}&Body=${escape(post.heading)} ${window.location.href}`
     }
   ];
 }

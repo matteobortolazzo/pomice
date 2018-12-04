@@ -1,6 +1,7 @@
 import { Component, Prop } from '@stencil/core';
 
 import { generateSocialButtons } from './pom-share-buttons.functions';
+import {Post} from "../../models/post.model";
 
 @Component({
   tag: 'pom-share-buttons',
@@ -8,9 +9,7 @@ import { generateSocialButtons } from './pom-share-buttons.functions';
   shadow: true
 })
 export class ShareButtons {
-  private pageUrl = window.location.href; // window.location.href.toString().split('#')[0];
-
-  @Prop() heading: string;
+  @Prop() post: Post;
 
   private onLinkClicked(e, url: string) {
     if (!url.startsWith('mailto:')) {
@@ -25,7 +24,7 @@ export class ShareButtons {
         <div class="share-button"><ion-icon name="share"></ion-icon> Share</div>
         <div class="popup">
           <div class="popup-inner">
-            {generateSocialButtons(this.heading, this.pageUrl).map(b =>
+            {generateSocialButtons(this.post).map(b =>
               <div class="social-button" >
                 <a onClick={e => this.onLinkClicked(e, b.url)} href={b.url} target={b.icon === 'mail' ? '' : '_blank'}>
                   <ion-icon name={b.icon}></ion-icon>
