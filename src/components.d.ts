@@ -13,6 +13,9 @@ import 'ip-stencil-route-listener';
 import {
   MatchResults,
 } from '@stencil/router';
+import {
+  Post,
+} from './models/post.model';
 
 
 export namespace Components {
@@ -73,10 +76,10 @@ export namespace Components {
   }
 
   interface PomShareButtons {
-    'heading': string;
+    'post': Post;
   }
   interface PomShareButtonsAttributes extends StencilHTMLAttributes {
-    'heading'?: string;
+    'post'?: Post;
   }
 
   interface PomTagsList {

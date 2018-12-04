@@ -135,7 +135,7 @@ export class AppTutorial {
                   }
                 </button>
               </div>
-              <pom-share-buttons heading={this.post.heading}></pom-share-buttons>
+              <pom-share-buttons post={this.post}></pom-share-buttons>
             </div>
           </header>
           <article innerHTML={convertedContent}></article>
