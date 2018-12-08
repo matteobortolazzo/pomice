@@ -26,7 +26,7 @@ export class ShareButtons {
           <div class="popup-inner">
             {generateSocialButtons(this.post).map(b =>
               <div class="social-button" >
-                <a onClick={e => this.onLinkClicked(e, b.url)} href={b.url} target={b.icon === 'mail' ? '' : '_blank'}>
+                <a rel="noopener" onClick={e => this.onLinkClicked(e, b.url)} href={b.url} target={b.icon === 'mail' ? '' : '_blank'}>
                   <ion-icon name={b.icon}></ion-icon>
                   <span class="description">{b.description}</span>
                 </a>
