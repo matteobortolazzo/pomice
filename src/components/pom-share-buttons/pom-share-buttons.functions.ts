@@ -14,8 +14,8 @@ export function generateSocialButtons(post: Post): SocialButtonItem[] {
       description: 'LinkedIn',
       url: 'https://www.linkedin.com/shareArticle?mini=true&' +
         `url=${escape(window.location.href)}&` +
-        `title=${escape(post.heading)}` +
-        `source=${escape(BLOG_TITLE)}&`,
+        `title=${escape(post.heading)}&` +
+        `source=${escape(BLOG_TITLE)}`,
       target: '_blank'
     },
     {
