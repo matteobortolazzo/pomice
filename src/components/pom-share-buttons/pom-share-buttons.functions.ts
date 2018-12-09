@@ -1,5 +1,5 @@
-import {Post} from "../../models/post.model";
-import {BLOG_TITLE} from "../../settings";
+import { Post } from '../../models/post.model';
+import { BLOG_TITLE } from '../../settings';
 
 export function generateSocialButtons(post: Post): SocialButtonItem[] {
   return [

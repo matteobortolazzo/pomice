@@ -15,7 +15,6 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class AppTutorial {
   private post: Post;
-  private loaded = false;
   private renderer = new marked.Renderer();
 
   @State() private darkMode = false;
@@ -35,27 +34,18 @@ export class AppTutorial {
     PageService.setOpenGraphMetas(this.post);
   }
 
-  componentDidLoad() {
-    setTimeout(() => {
-      this.sections.forEach(section => {
-        section.top = document.querySelector(`#${section.id}`).getBoundingClientRect().top;
-      });
-      this.loaded = true;
-    }, 300);
-  }
-
   @Listen('window:scroll')
   scrolled() {
     // If the nav menu is not visible
     if (window.innerWidth < 1000) {
       return;
     }
-    if (!this.loaded) {
-      return;
-    }
 
+    this.sections.forEach(section => {
+      section.top = document.querySelector(`#${section.id}`).getBoundingClientRect().top + window.scrollY;
+    });
     const scrollTop = document.documentElement.scrollTop;
-    const visitedSections = this.sections.filter(s => s.top && s.top < scrollTop + 56.4).reverse();
+    const visitedSections = this.sections.filter(s => s.top < scrollTop + 56.4).reverse();
     this.sections.forEach(s => s.active = false);
     if (visitedSections.length > 0) {
       visitedSections[0].active = true;
