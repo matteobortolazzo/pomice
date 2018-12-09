@@ -25,7 +25,6 @@ export class Header {
   @Prop({ mutable: true }) showPercentage = false;
 
   componentWillLoad() {
-    console.log(window.location.pathname);
     this.showPercentage = window.location.pathname !== '/';
   }
 
