@@ -15,7 +15,7 @@ export class ShareButtons {
   private onLinkClicked(e, url: string) {
     if (!url.startsWith('mailto:')) {
       e.preventDefault();
-      window.open(url, 'sharer', 'toolbar=0,status=0,width=648,height=395');
+      window.open(url, 'sharer', 'toolbar=0,status=0,width=520,height=570');
     }
   }
 
@@ -27,7 +27,7 @@ export class ShareButtons {
           <div class="popup-inner">
             {generateSocialButtons(this.post).map(b =>
               <div class="social-button" >
-                <a rel="noopener" onClick={e => this.onLinkClicked(e, b.url)} href={b.url} target={b.icon === 'mail' ? '' : '_blank'}>
+                <a rel="noopener" onClick={e => this.onLinkClicked(e, b.url)} href={b.url} target={b.target}>
                   <ion-icon name={b.icon}></ion-icon>
                   <span class="description">{b.description}</span>
                 </a>

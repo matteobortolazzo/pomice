@@ -6,21 +6,23 @@ export function generateSocialButtons(post: Post): SocialButtonItem[] {
     {
       icon: 'logo-twitter',
       description: 'Twitter',
-      url: `http://www.twitter.com/intent/tweet?text=${escape(post.heading)}&url=${escape(window.location.href)}`
+      url: `http://www.twitter.com/intent/tweet?text=${escape(post.heading)}&url=${escape(window.location.href)}`,
+      target: '_blank'
     },
     {
       icon: 'logo-linkedin',
       description: 'LinkedIn',
       url: 'https://www.linkedin.com/shareArticle?mini=true&' +
-        `title=${escape(post.heading)}` +
         `url=${escape(window.location.href)}&` +
-        `summary=${escape(post.description)}&` +
-        `source=${escape(BLOG_TITLE)}&`
+        `title=${escape(post.heading)}` +
+        `source=${escape(BLOG_TITLE)}&`,
+      target: '_blank'
     },
     {
       icon: 'mail',
       description: 'Email',
-      url: `mailto:?Subject=${post.heading}&Body=${escape(post.heading)} ${window.location.href}`
+      url: `mailto:?Subject=${post.heading}&Body=${escape(post.heading)} ${window.location.href}`,
+      target: ''
     }
   ];
 }
@@ -28,4 +30,6 @@ export function generateSocialButtons(post: Post): SocialButtonItem[] {
 export interface SocialButtonItem {
   icon: string;
   description: string;
-  url: string; }
+  url: string;
+  target: string;
+}
