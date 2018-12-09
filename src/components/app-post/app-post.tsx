@@ -54,7 +54,7 @@ export class AppTutorial {
       return;
     }
 
-    const scrollTop = document.documentElement.scrollTop + 60;
+    const scrollTop = document.documentElement.scrollTop;
     const visitedSections = this.sections.filter(s => s.top && s.top < scrollTop + 56.4).reverse();
     this.sections.forEach(s => s.active = false);
     if (visitedSections.length > 0) {

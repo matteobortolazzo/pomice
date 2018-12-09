@@ -22,7 +22,12 @@ export class Header {
   @Prop() showBack = false;
   @Prop() blogTitle: string;
   @Prop() blogSubtitle: string;
-  @Prop() showPercentage = false;
+  @Prop({ mutable: true }) showPercentage = false;
+
+  componentWillLoad() {
+    console.log(window.location.pathname);
+    this.showPercentage = window.location.pathname !== '/';
+  }
 
   @Watch('showPercentage')
   showPercentageChanged() {
