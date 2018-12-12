@@ -4,13 +4,13 @@ import {needUpdate} from "../../services/updates.service";
 @Component({
   tag: 'pom-header',
   styleUrl: 'pom-header.scss',
-  shadow: true
+  shadow: false
 })
 export class Header {
   constructor() {
     window.addEventListener('swUpdate', () => {
       if (needUpdate()) {
-        alert('New Update available! Reload the webapp to see the latest juicy changes.');
+        this.askUpdate = true;
       }
     });
   }
@@ -18,6 +18,7 @@ export class Header {
   @Element() rootEl: HTMLElement;
 
   @State() menuOpened = false;
+  @State() askUpdate = false;
   @State() lastPercentage = 0;
 
   @Watch('lastPercentage')
@@ -58,10 +59,29 @@ export class Header {
     this.menuOpened = !this.menuOpened;
   }
 
+  private async updateNow() {
+    location.reload(true);
+  }
+
+  private skipUpdate() {
+    this.askUpdate = false;
+  }
+
+  private getNavBarClasses() {
+    let baseClass = 'nav-inner ';
+    if (this.askUpdate) {
+      return baseClass + 'show-update';
+    }
+    if(this.menuOpened) {
+      return baseClass + 'show-menu'
+    }
+    return baseClass;
+  }
+
   render() {
     return (
       <nav>
-        <div class={'nav-inner ' + (this.menuOpened ? 'show-menu' : '')}>
+        <div class={this.getNavBarClasses()}>
           <div class={'nav-header ' + (this.showBack ? 'show-back' : '')}>
             <div class="back-button" onClick={() => window.history.back()}>
               <ion-icon name="arrow-back"></ion-icon>
@@ -70,6 +90,10 @@ export class Header {
               <div class="title">{this.blogTitle}</div>
               <div class="subtitle">{this.blogSubtitle}</div>
             </stencil-route-link>
+          </div>
+          <div class="update-box">
+            <button class="pom-button" onClick={() => this.updateNow()}>Update now</button>
+            <button class="pom-button-clear" onClick={() => this.skipUpdate()}>Close</button>
           </div>
           <div class="menu">
             <div class="items">

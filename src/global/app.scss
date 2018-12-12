@@ -65,3 +65,36 @@ a:visited {
   text-decoration: none;
   color: var(--pom-color-secondary);
 }
+
+.pom-button {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  box-shadow: var(--pom-box-shadow);
+  background: var(--pom-color-secondary);
+  color: var(--pom-color-secondary-contrast);
+  transition: var(--pom-transition);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.pom-button-clear {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: var(--pom-transition);
+  color: var(--pom-color-primary-contrast);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

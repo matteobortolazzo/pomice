@@ -141,7 +141,7 @@ export class AppTutorial {
           <article innerHTML={convertedContent}></article>
           <div id="install-box">
             <div><span>Pro tip</span>: if you want these awesome articles in your pocket and offline your can install this blog!</div>
-            <button class="install-button" onClick={this.showInstallPrompt}>Install</button>
+            <button class="pom-button" onClick={() => this.showInstallPrompt()}>Install</button>
           </div>
         </section>
         <div class="nav">
