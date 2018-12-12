@@ -183,3 +183,40 @@ article {
     display: flex;
   }
 }
+
+#install-box {
+  display: none;
+  padding: 16px 0;
+  font-size: 0.9em;
+  border-top: 1px solid var(--pom-text-color-2);
+
+  &.visible {
+    display: flex;
+  }
+
+  & > *:first-child {
+    flex: 1;
+
+    span {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  .install-button {
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: var(--pom-box-shadow);
+    background: var(--pom-color-secondary);
+    color: var(--pom-color-secondary-contrast);
+    transition: var(--pom-transition);
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

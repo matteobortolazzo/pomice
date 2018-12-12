@@ -1,4 +1,5 @@
 import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
+import {needUpdate} from "../../services/updates.service";
 
 @Component({
   tag: 'pom-header',
@@ -6,14 +7,12 @@ import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
   shadow: true
 })
 export class Header {
-  private installed = false;
-  private installPromptEvent;
-
   constructor() {
-    (window as any).onbeforeinstallprompt = e => {
-      e.preventDefault();
-      this.installPromptEvent = e;
-    };
+    window.addEventListener('swUpdate', () => {
+      if (needUpdate()) {
+        alert('New Update available! Reload the webapp to see the latest juicy changes.');
+      }
+    });
   }
 
   @Element() rootEl: HTMLElement;
@@ -53,11 +52,6 @@ export class Header {
     const st = 'scrollTop';
     const sh = 'scrollHeight';
     this.lastPercentage = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
-
-    if (this.lastPercentage > 95 && !this.installed) {
-      this.installPromptEvent.prompt();
-      this.installed = true;
-    }
   }
 
   private toggle() {

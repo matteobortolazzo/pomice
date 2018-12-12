@@ -15,6 +15,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class AppTutorial {
   private post: Post;
+  private installPromptEvent;
   private renderer = new marked.Renderer();
 
   @State() private darkMode = false;
@@ -23,6 +24,11 @@ export class AppTutorial {
   @Prop() match: MatchResults;
 
   constructor() {
+    (window as any).onbeforeinstallprompt = e => {
+      e.preventDefault();
+      this.installPromptEvent = e;
+      document.querySelector('#install-box').classList.add('visible');
+    };
     this.setupRenderer();
   }
 
@@ -99,6 +105,10 @@ export class AppTutorial {
     ThemeService.setTheme(this.darkMode);
   }
 
+  private showInstallPrompt() {
+    this.installPromptEvent.prompt();
+  }
+
   render() {
     const convertedContent = marked(this.post.content, { renderer: this.renderer });
     return (
@@ -129,6 +139,10 @@ export class AppTutorial {
             </div>
           </header>
           <article innerHTML={convertedContent}></article>
+          <div id="install-box">
+            <div><span>Pro tip</span>: if you want these awesome articles in your pocket and offline your can install this blog!</div>
+            <button class="install-button" onClick={this.showInstallPrompt}>Install</button>
+          </div>
         </section>
         <div class="nav">
           <div class="nav-inner">
