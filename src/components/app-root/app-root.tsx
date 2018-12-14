@@ -13,6 +13,7 @@ import {
   PROFILE_URL_LINKEDIN,
   PROFILE_URL_TWITTER
 } from '../../settings';
+import {PwaService} from "../../services/pwa.service";
 
 @Component({
   tag: 'app-root',
@@ -21,6 +22,11 @@ import {
 })
 export class AppRoot {
   private header: HTMLPomHeaderElement;
+
+  constructor() {
+    (window as any).onbeforeinstallprompt =
+        e => PwaService.handleInstallEvent(e);
+  }
 
   componentWillLoad() {
     ThemeService.loadTheme();

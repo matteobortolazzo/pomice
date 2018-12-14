@@ -7,6 +7,7 @@ import { Post } from '../../models/post.model';
 import { PageService } from '../../services/page.service';
 import { PostsService } from '../../services/posts.service';
 import { ThemeService } from '../../services/theme.service';
+import {PwaService} from "../../services/pwa.service";
 
 @Component({
   tag: 'app-post',
@@ -15,7 +16,6 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class AppTutorial {
   private post: Post;
-  private installPromptEvent;
   private renderer = new marked.Renderer();
 
   @State() private darkMode = false;
@@ -24,11 +24,9 @@ export class AppTutorial {
   @Prop() match: MatchResults;
 
   constructor() {
-    (window as any).onbeforeinstallprompt = e => {
-      e.preventDefault();
-      this.installPromptEvent = e;
+    PwaService.subscribe(() => {
       document.querySelector('#install-box').classList.add('visible');
-    };
+    });
     this.setupRenderer();
   }
 
@@ -106,7 +104,7 @@ export class AppTutorial {
   }
 
   private showInstallPrompt() {
-    this.installPromptEvent.prompt();
+    PwaService.prompt();
   }
 
   render() {
