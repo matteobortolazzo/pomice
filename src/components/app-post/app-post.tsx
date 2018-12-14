@@ -6,8 +6,8 @@ import Moment from 'moment';
 import { Post } from '../../models/post.model';
 import { PageService } from '../../services/page.service';
 import { PostsService } from '../../services/posts.service';
+import { PwaService } from '../../services/pwa.service';
 import { ThemeService } from '../../services/theme.service';
-import {PwaService} from "../../services/pwa.service";
 
 @Component({
   tag: 'app-post',

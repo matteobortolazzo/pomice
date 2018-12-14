@@ -1,5 +1,6 @@
 import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
-import {needUpdate} from "../../services/updates.service";
+
+import { needUpdate } from '../../services/updates.service';
 
 @Component({
   tag: 'pom-header',
@@ -68,12 +69,12 @@ export class Header {
   }
 
   private getNavBarClasses() {
-    let baseClass = 'nav-inner ';
+    const baseClass = 'nav-inner ';
     if (this.askUpdate) {
       return baseClass + 'show-update';
     }
-    if(this.menuOpened) {
-      return baseClass + 'show-menu'
+    if (this.menuOpened) {
+      return baseClass + 'show-menu';
     }
     return baseClass;
   }
