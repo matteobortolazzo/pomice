@@ -105,6 +105,7 @@ export class AppTutorial {
 
   private showInstallPrompt() {
     PwaService.prompt();
+    document.querySelector('#install-box').classList.remove('visible');
   }
 
   render() {
