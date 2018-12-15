@@ -1,6 +1,6 @@
 import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
-
-import { needUpdate } from '../../services/updates.service';
+import {AppService} from "../../services/app.service";
+import {PwaService} from "../../services/pwa.service";
 
 @Component({
   tag: 'pom-header',
@@ -9,11 +9,8 @@ import { needUpdate } from '../../services/updates.service';
 })
 export class Header {
   constructor() {
-    window.addEventListener('swUpdate', () => {
-      if (needUpdate()) {
-        this.askUpdate = true;
-      }
-    });
+    AppService.getAppVersion().then(version =>
+      this.askUpdate = PwaService.needUpdate(version));
   }
 
   @Element() rootEl: HTMLElement;

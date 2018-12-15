@@ -11,5 +11,20 @@ export const PwaService = {
   },
   prompt() {
     this.installPromptEvent.prompt();
+  },
+  needUpdate(currentVersion: string): boolean {
+    if (typeof (Storage) === 'undefined') {
+      return false;
+    }
+    const installedVersion = localStorage.getItem('version');
+    if (installedVersion === null) {
+      localStorage.setItem('version', currentVersion);
+      return false;
+    }
+    if (installedVersion !== currentVersion) {
+      localStorage.setItem('version', currentVersion);
+      return true;
+    }
+    return false;
   }
 };

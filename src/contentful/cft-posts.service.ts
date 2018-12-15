@@ -2,7 +2,7 @@ import { DetailFields } from '../contentful/fields/post-detail';
 import { ListItemFields } from '../contentful/fields/post-preview';
 import { Post } from '../models/post.model';
 import { PostsServiceInterface } from '../services/posts.service';
-import { CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE_ID } from '../settings';
+import {get} from "./helpers/ctf-http.helper";
 
 export const CtfPostService: PostsServiceInterface = {
   async getPostsAsync(): Promise<Post[]> {
@@ -24,14 +24,3 @@ export const CtfPostService: PostsServiceInterface = {
     return item.fields;
   }
 };
-
-function get<T>(path: string): Promise<T> {
-  if (!CONTENTFUL_SPACE_ID) {
-    throw new Error('SPACE_ID not set.');
-  }
-  if (!CONTENTFUL_ACCESS_TOKEN) {
-    throw new Error('ACCESS_TOKEN not set.');
-  }
-  return fetch(`https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master/${path}&access_token=${CONTENTFUL_ACCESS_TOKEN}`)
-    .then(response => response.json());
-}

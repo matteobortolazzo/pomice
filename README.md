@@ -35,6 +35,13 @@ export interface Post {
 }
 ```
 
+And a content model "appInfo" with the following interface:
+```typescript
+export interface AppInfo {
+  version: string
+}
+```
+
 Run:
 
 ```bash
