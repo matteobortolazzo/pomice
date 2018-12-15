@@ -25,7 +25,7 @@ export class AppTutorial {
 
   constructor() {
     PwaService.subscribe(() => {
-      document.querySelector('#install-box').classList.add('visible');
+      this.showInstallButton();
     });
     this.setupRenderer();
   }
@@ -36,6 +36,12 @@ export class AppTutorial {
     PageService.setTitle(this.post.heading);
     PageService.setDescription(this.post.description);
     PageService.setOpenGraphMetas(this.post);
+  }
+
+  componentDidLoad() {
+    if (PwaService.installPromptEvent) {
+      this.showInstallButton();
+    }
   }
 
   @Listen('window:scroll')
@@ -103,6 +109,9 @@ export class AppTutorial {
     ThemeService.setTheme(this.darkMode);
   }
 
+  private showInstallButton() {
+    document.querySelector('#install-box').classList.add('visible');
+  }
   private showInstallPrompt() {
     PwaService.prompt();
     document.querySelector('#install-box').classList.remove('visible');

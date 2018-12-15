@@ -81,6 +81,10 @@ nav {
       }
       .update-box {
         transform: translateY(0);
+
+        & > *:first-child {
+          margin-right: 10px;
+        }
       }
     }
   }

@@ -185,9 +185,11 @@ article {
 }
 
 #install-box {
+  margin-top: 32px;
   display: none;
-  padding: 16px 0;
+  padding: 32px 0;
   font-size: 0.9em;
+  align-items: flex-start;
   border-top: 1px solid var(--pom-text-color-2);
 
   &.visible {
@@ -196,10 +198,16 @@ article {
 
   & > *:first-child {
     flex: 1;
+    text-align: justify;
 
     span {
       font-weight: bold;
       text-transform: uppercase;
     }
+  }
+
+  .pom-button {
+    margin-top: 5px;
+    margin-left: 10px;
   }
 }
