@@ -17,7 +17,7 @@ export const PwaService = {
       return false;
     }
     const installedVersion = localStorage.getItem('version');
-    if (installedVersion === null) {
+    if (installedVersion === undefined || installedVersion === null) {
       localStorage.setItem('version', currentVersion);
       return false;
     }

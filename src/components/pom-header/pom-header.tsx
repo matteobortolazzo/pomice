@@ -8,11 +8,6 @@ import {PwaService} from "../../services/pwa.service";
   shadow: false
 })
 export class Header {
-  constructor() {
-    AppService.getAppVersion().then(version =>
-      this.askUpdate = PwaService.needUpdate(version));
-  }
-
   @Element() rootEl: HTMLElement;
 
   @State() menuOpened = false;
@@ -34,6 +29,11 @@ export class Header {
 
   componentWillLoad() {
     this.showPercentage = window.location.pathname !== '/';
+  }
+  componentDidLoad() {
+    AppService.getAppVersion().then(version => {
+      this.askUpdate = PwaService.needUpdate(version);
+    });
   }
 
   @Watch('showPercentage')
